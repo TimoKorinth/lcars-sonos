@@ -31,6 +31,19 @@
     border-radius: @radius;
 }
 
+// Color palette
+@white: #FFFFFF;
+@black: #000000;
+@orange: #FF9900;
+@purplelight: #CC99CC;
+@bluegray: #9999CC;
+@redbrown: #CC6666;
+@beige: #FFCC99;
+@lightblue: #9999FF;
+@apricot: #FF9966;
+@purple: #CC6699;
+@orangelight: #F7C64A;
+
 // Global styles
 html, body {
     height: 100%;
@@ -39,7 +52,7 @@ html, body {
     margin: 0px;
     padding: 0px;
     overflow: hidden;
-    font-family: Verdana;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -49,8 +62,7 @@ body {
 // App
 app {
     .flex(1, 1, 100%);
-    background: #000000;
-    color: #FFFFFF;
+    background: @black;
     .flexDirectionColumn;
 }
 
@@ -63,17 +75,17 @@ app {
         .flex(0, 0, auto);
         content: "";
         width: 50px;
-        background: #F7C64A;
-        .borderRadius(10px 0px 0px 10px);
+        background: @orangelight;
+        .borderRadius(20px 0px 0px 20px);
     }
 
     & > #title {
         .flex(1, 1, 100%);
-        background: #CC99CC;
+        background: @purplelight;
 
         & > span {
-            background: #000000;
-            color: #F7C64A;
+            background: @black;
+            color: @orangelight;
             font-size: 24pt;
             padding: 0px 10px 0px 10px;
         }        
@@ -83,17 +95,19 @@ app {
         .flex(0, 0, auto);
         content: "";
         width: 50px;
-        background: #F7C64A;
-        border-left: 10px solid #000000;
-        .borderRadius(0px 10px 10px 0px);
+        background: @orangelight;
+        border-left: 10px solid @black;
+        .borderRadius(0px 20px 20px 0px);
     }    
 }
 
 // Buttons
 .button {
-    background: #9999CC;
+    @background: @bluegray;
+
+    background: @background;
     border: none;
-    color: #000000;
+    color: @black;
     font-size: 14pt;
     padding: 30px 40px 0px 40px;
     .borderRadius(30px);
@@ -104,10 +118,10 @@ app {
     }
 
     &:hover {
-        background: #a6a6d9;
+        background: spin(@background, 180);
     }
 
     &:active {
-        background: #b8b8ef;
+        background: spin(@background, 200);
     }
 }

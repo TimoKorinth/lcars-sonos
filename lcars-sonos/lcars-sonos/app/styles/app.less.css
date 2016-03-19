@@ -15,7 +15,7 @@ body {
   margin: 0px;
   padding: 0px;
   overflow: hidden;
-  font-family: Verdana;
+  font-family: Helvetica, Arial, sans-serif;
 }
 body {
   display: -webkit-box;
@@ -31,7 +31,6 @@ app {
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
   background: #000000;
-  color: #FFFFFF;
   -webkit-box-direction: normal;
   -moz-box-direction: normal;
   -webkit-box-orient: vertical;
@@ -62,9 +61,9 @@ app {
   content: "";
   width: 50px;
   background: #F7C64A;
-  -webkit-border-radius: 10px 0px 0px 10px;
-  -moz-border-radius: 10px 0px 0px 10px;
-  border-radius: 10px 0px 0px 10px;
+  -webkit-border-radius: 20px 0px 0px 20px;
+  -moz-border-radius: 20px 0px 0px 20px;
+  border-radius: 20px 0px 0px 20px;
 }
 #header > #title {
   -webkit-box-flex: 1;
@@ -90,9 +89,9 @@ app {
   width: 50px;
   background: #F7C64A;
   border-left: 10px solid #000000;
-  -webkit-border-radius: 0px 10px 10px 0px;
-  -moz-border-radius: 0px 10px 10px 0px;
-  border-radius: 0px 10px 10px 0px;
+  -webkit-border-radius: 0px 20px 20px 0px;
+  -moz-border-radius: 0px 20px 20px 0px;
+  border-radius: 0px 20px 20px 0px;
 }
 .button {
   background: #9999CC;
@@ -109,8 +108,8 @@ app {
   outline: none;
 }
 .button:hover {
-  background: #a6a6d9;
+  background: #cccc99;
 }
 .button:active {
-  background: #b8b8ef;
+  background: #bbcc99;
 }
