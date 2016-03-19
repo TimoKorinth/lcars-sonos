@@ -63,6 +63,7 @@
     <Content Include="index.html" />
     <Content Include="node_modules\angular2\bundles\angular2-polyfills.js" />
     <Content Include="node_modules\angular2\bundles\angular2.dev.js" />
+    <Content Include="node_modules\angular2\bundles\http.dev.js" />
     <Content Include="node_modules\angular2\es6\dev\src\testing\shims_for_IE.js" />
     <Content Include="node_modules\es6-shim\es6-shim.min.js" />
     <Content Include="node_modules\rxjs\bundles\Rx.js" />
