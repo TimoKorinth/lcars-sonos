@@ -61,7 +61,7 @@
     <Content Include="app\app.component.ts" />
     <Content Include="app\main.ts" />
     <Content Include="images\**\*" />
-    <Content Include="default.html" />
+    <Content Include="index.html" />
     <Content Include="package.json" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
