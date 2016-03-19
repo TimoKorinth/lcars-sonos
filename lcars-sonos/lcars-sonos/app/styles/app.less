@@ -35,11 +35,11 @@
 html, body {
     height: 100%;
     width: 100%;
-    border: 0;
+    border: none;
     margin: 0px;
     padding: 0px;
     overflow: hidden;
-    font-family: Arial;
+    font-family: Verdana;
 }
 
 body {
@@ -92,10 +92,22 @@ app {
 // Buttons
 .button {
     background: #9999CC;
-    border: 0;
+    border: none;
     color: #000000;
-    font-size: 20pt;
-    padding: 0px 10px 0px 10px;
-    .borderRadius(10px);
+    font-size: 14pt;
+    padding: 30px 40px 0px 40px;
+    .borderRadius(30px);
     margin: 10px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: #a6a6d9;
+    }
+
+    &:active {
+        background: #b8b8ef;
+    }
 }

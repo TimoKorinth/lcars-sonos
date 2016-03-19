@@ -29,10 +29,10 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     this.http.get('http://minwinpc:5005/Arbeitszimmer/play/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
                 };
                 AppComponent.prototype.pause = function () {
-                    this.http.get('http://minwinpc:5005/Arbeitszimmer/pause/' + Date.now(), { search: Date.now().toString() }).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
+                    this.http.get('http://minwinpc:5005/Arbeitszimmer/pause/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
                 };
                 AppComponent.prototype.next = function () {
-                    this.http.get('http://minwinpc:5005/Arbeitszimmer/next/' + Date.now(), { search: Date.now().toString() }).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
+                    this.http.get('http://minwinpc:5005/Arbeitszimmer/next/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
                 };
                 AppComponent = __decorate([
                     core_1.Component({
