@@ -58,8 +58,7 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="app\app.component.ts" />
-    <Content Include="app\main.ts" />
+    <Content Include="app\**\*" />
     <Content Include="images\**\*" />
     <Content Include="index.html" />
     <Content Include="node_modules\angular2\bundles\angular2-polyfills.js" />
