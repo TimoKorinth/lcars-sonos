@@ -62,11 +62,12 @@ body {
 // App
 app {
     .flex(1, 1, 100%);
+    .flexDisplay;
     background: @black;
     .flexDirectionColumn;
 }
 
-#header {
+.header {
     .flex(0, 0, auto);
     .flexDisplay;
     margin: 10px;
@@ -79,7 +80,7 @@ app {
         .borderRadius(20px 0px 0px 20px);
     }
 
-    & > #title {
+    & > .title {
         .flex(1, 1, 100%);
         background: @purplelight;
 
@@ -88,6 +89,7 @@ app {
             color: @orangelight;
             font-size: 24pt;
             padding: 0px 10px 0px 10px;
+            display: inline-block;
         }        
     }
 
@@ -99,6 +101,67 @@ app {
         border-left: 10px solid @black;
         .borderRadius(0px 20px 20px 0px);
     }    
+}
+
+.frame {
+    .flex(1, 1, 100%);
+    .flexDisplay;
+
+    & > .content {
+        .flex(1, 1, 100%);
+    }
+
+    & > .sidebar {
+        .flex(0, 0, auto);
+        .flexDisplay;
+        .flexDirectionColumn;
+        width: 200px;
+
+        & > .sidebaritem {
+            .flex(1, 1, 100%);
+            margin: 10px;
+            @background: @purple;
+            background: @purple;
+            position: relative;
+
+            &:hover, &:active {
+                background: spin(@background, 180);
+            }
+
+            & > span {
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+
+        & > .sidebaritem:nth-child(2) {
+            @background: @beige;
+            background: @background;
+
+            &:hover, &:active {
+                background: spin(@background, 180);
+            }
+        }
+
+        & > .sidebaritem:nth-child(3) {
+            @background: @apricot;
+            background: @background;
+
+            &:hover, &:active {
+                background: spin(@background, 180);
+            }
+        }
+
+        & > .sidebaritem:nth-child(5) {
+            @background: @redbrown;
+            background: @background;
+
+            &:hover, &:active {
+                background: spin(@background, 180);
+            }
+        }
+    }
 }
 
 // Buttons
@@ -117,11 +180,7 @@ app {
         outline: none;
     }
 
-    &:hover {
+    &:hover, &:active {
         background: spin(@background, 180);
-    }
-
-    &:active {
-        background: spin(@background, 200);
     }
 }

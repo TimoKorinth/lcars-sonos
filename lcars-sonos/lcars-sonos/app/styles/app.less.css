@@ -30,6 +30,11 @@ app {
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
   background: #000000;
   -webkit-box-direction: normal;
   -moz-box-direction: normal;
@@ -39,7 +44,7 @@ app {
   -ms-flex-direction: column;
   flex-direction: column;
 }
-#header {
+.header {
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
   -webkit-flex: 0 0 auto;
@@ -52,7 +57,7 @@ app {
   display: flex;
   margin: 10px;
 }
-#header::before {
+.header::before {
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
   -webkit-flex: 0 0 auto;
@@ -65,7 +70,7 @@ app {
   -moz-border-radius: 20px 0px 0px 20px;
   border-radius: 20px 0px 0px 20px;
 }
-#header > #title {
+.header > .title {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -webkit-flex: 1 1 100%;
@@ -73,13 +78,14 @@ app {
   flex: 1 1 100%;
   background: #CC99CC;
 }
-#header > #title > span {
+.header > .title > span {
   background: #000000;
   color: #F7C64A;
   font-size: 24pt;
   padding: 0px 10px 0px 10px;
+  display: inline-block;
 }
-#header::after {
+.header::after {
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
   -webkit-flex: 0 0 auto;
@@ -92,6 +98,85 @@ app {
   -webkit-border-radius: 0px 20px 20px 0px;
   -moz-border-radius: 0px 20px 20px 0px;
   border-radius: 0px 20px 20px 0px;
+}
+.frame {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.frame > .content {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+.frame > .sidebar {
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 200px;
+}
+.frame > .sidebar > .sidebaritem {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  margin: 10px;
+  background: #CC6699;
+  position: relative;
+}
+.frame > .sidebar > .sidebaritem:hover,
+.frame > .sidebar > .sidebaritem:active {
+  background: #66cc99;
+}
+.frame > .sidebar > .sidebaritem > span {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.frame > .sidebar > .sidebaritem:nth-child(2) {
+  background: #FFCC99;
+}
+.frame > .sidebar > .sidebaritem:nth-child(2):hover,
+.frame > .sidebar > .sidebaritem:nth-child(2):active {
+  background: #99ccff;
+}
+.frame > .sidebar > .sidebaritem:nth-child(3) {
+  background: #FF9966;
+}
+.frame > .sidebar > .sidebaritem:nth-child(3):hover,
+.frame > .sidebar > .sidebaritem:nth-child(3):active {
+  background: #66ccff;
+}
+.frame > .sidebar > .sidebaritem:nth-child(5) {
+  background: #CC6666;
+}
+.frame > .sidebar > .sidebaritem:nth-child(5):hover,
+.frame > .sidebar > .sidebaritem:nth-child(5):active {
+  background: #66cccc;
 }
 .button {
   background: #9999CC;
@@ -107,9 +192,7 @@ app {
 .button:focus {
   outline: none;
 }
-.button:hover {
-  background: #cccc99;
-}
+.button:hover,
 .button:active {
-  background: #bbcc99;
+  background: #cccc99;
 }
