@@ -7,7 +7,9 @@
     "concurrently": "2.0.0",
     "lite-server": "2.1.0",
     "typescript": "1.8.9",
-    "typings": "0.7.9"
+    "typings": "0.7.9",
+    "less": "2.6.1",
+    "watch-less": "0.0.4"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.11",
@@ -19,10 +21,11 @@
     "zone.js": "0.6.4"
   },
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "concurrently \"npm run tsc:w\" \"npm run less-watch\" \"npm run lite\"",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
+    "less-watch": "watch-less -d app",
     "typings": "typings",
     "postinstall": "typings install"
   }

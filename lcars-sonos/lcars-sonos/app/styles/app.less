@@ -1,0 +1,36 @@
+﻿// Mixins
+
+.flexDisplay(@display: flex) {
+    display: -webkit-box;
+	display: -moz-box;
+	display: ~"-ms-@{display}box";
+	display: ~"-webkit-@{display}";
+	display: @display;
+}
+
+.flex(@grow: 0, @shrink: 1, @basis: auto) {
+    -webkit-box-flex: @grow;
+    -moz-box-flex: @grow;
+    -webkit-flex: @grow @shrink @basis;
+    -ms-flex: @grow @shrink @basis;
+    flex: @grow @shrink @basis;
+}
+
+// Global styles
+html, body {
+    height: 100%;
+    width: 100%;
+    border: 0;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+body {
+    .flexDisplay;
+}
+
+// App
+app {
+    .flex(1, 1, 100%);
+}
