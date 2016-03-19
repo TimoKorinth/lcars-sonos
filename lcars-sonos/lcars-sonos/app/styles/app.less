@@ -1,5 +1,4 @@
 ﻿// Mixins
-
 .flexDisplay(@display: flex) {
     display: -webkit-box;
 	display: -moz-box;
@@ -16,6 +15,22 @@
     flex: @grow @shrink @basis;
 }
 
+.flexDirectionColumn {
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.borderRadius(@radius: 0) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
 // Global styles
 html, body {
     height: 100%;
@@ -24,6 +39,7 @@ html, body {
     margin: 0px;
     padding: 0px;
     overflow: hidden;
+    font-family: Arial;
 }
 
 body {
@@ -33,4 +49,42 @@ body {
 // App
 app {
     .flex(1, 1, 100%);
+    background: #000000;
+    color: #FFFFFF;
+    .flexDirectionColumn;
+}
+
+#header {
+    .flex(0, 0, auto);
+    .flexDisplay;
+    margin: 10px;
+
+    &::before {
+        .flex(0, 0, auto);
+        content: "";
+        width: 50px;
+        background: #F7C64A;
+        .borderRadius(10px 0px 0px 10px);
+    }
+
+    & > #title {
+        .flex(1, 1, 100%);
+        background: #CC99CC;
+
+        & > span {
+            background: #000000;
+            color: #F7C64A;
+            font-size: 20pt;
+            padding: 0px 10px 0px 10px;
+        }        
+    }
+
+    &::after {
+        .flex(0, 0, auto);
+        content: "";
+        width: 50px;
+        background: #F7C64A;
+        border-left: 10px solid #000000;
+        .borderRadius(0px 10px 10px 0px);
+    }    
 }
