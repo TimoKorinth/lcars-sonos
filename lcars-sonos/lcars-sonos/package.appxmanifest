@@ -14,12 +14,15 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" StartPage="index.html">
+    <Application Id="App" StartPage="ms-appx-web:///index.html">
       <uap:VisualElements DisplayName="lcars-sonos" Description="lcars-sonos" BackgroundColor="transparent" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
         <uap:DefaultTile Wide310x150Logo="images\Wide310x150Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="images\splashscreen.png" />
       </uap:VisualElements>
+      <uap:ApplicationContentUriRules>
+        <uap:Rule Match="ms-appx-web:///" Type="include" WindowsRuntimeAccess="all" />
+      </uap:ApplicationContentUriRules>
     </Application>
   </Applications>
   <Capabilities>
