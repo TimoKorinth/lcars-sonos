@@ -211,3 +211,5 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 /lcars-sonos/lcars-sonos/typings
+/lcars-sonos/lcars-sonos/app/*.js
+/lcars-sonos/lcars-sonos/app/*.js.map

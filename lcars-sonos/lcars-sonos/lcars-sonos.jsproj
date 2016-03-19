@@ -58,7 +58,8 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="app\**\*" />
+    <Content Include="app\app.component.ts" />
+    <Content Include="app\main.ts" />
     <Content Include="images\**\*" />
     <Content Include="default.html" />
     <Content Include="package.json" />
