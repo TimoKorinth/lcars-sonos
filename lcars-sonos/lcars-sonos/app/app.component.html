@@ -2,12 +2,11 @@
     <div class="title">
         <span>SONOS</span>
     </div>
+    <button class="framebuttonround">+ GROUP</button>
 </div>
 <div class="frame">
     <div class="content">
-        <button (click)="play()" class="button">START</button>
-        <button (click)="pause()" class="button">STOP</button>
-        <button (click)="next()" class="button">NEXT</button>
+        
     </div>
     <div class="sidebar">
         <div class="sidebaritem"><span>Wohnzimmer</span></div>
@@ -19,6 +18,11 @@
 <div class="footer">
     <div class="title">
         <span>FOOTER</span>
+    </div>
+    <div class="buttons">
+        <button (click)="play()" class="framebutton">START</button>
+        <button (click)="pause()" class="framebutton">STOP</button>
+        <button (click)="next()" class="framebutton">NEXT</button>
     </div>
     <button class="killbutton">KILL</button>
 </div>

@@ -85,20 +85,6 @@ app {
   padding: 0px 10px 0px 10px;
   display: inline-block;
 }
-.header::after {
-  -webkit-box-flex: 0;
-  -moz-box-flex: 0;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  content: "";
-  width: 50px;
-  background: #F7C64A;
-  border-left: 10px solid #000000;
-  -webkit-border-radius: 0px 20px 20px 0px;
-  -moz-border-radius: 0px 20px 20px 0px;
-  border-radius: 0px 20px 20px 0px;
-}
 .footer {
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
@@ -126,12 +112,11 @@ app {
   border-radius: 20px 0px 0px 20px;
 }
 .footer > .title {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -webkit-flex: 1 1 100%;
-  -ms-flex: 1 1 100%;
-  flex: 1 1 100%;
-  background: #CC99CC;
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 .footer > .title > span {
   background: #000000;
@@ -139,6 +124,19 @@ app {
   font-size: 24pt;
   padding: 0px 10px 0px 10px;
   display: inline-block;
+}
+.footer > .buttons {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  background: #CC99CC;
 }
 .footer > .killbutton {
   -webkit-box-flex: 0;
@@ -280,4 +278,48 @@ app {
 .button:hover,
 .button:active {
   background: #cccc99;
+}
+.framebutton {
+  background: #9999CC;
+  border: none;
+  color: #000000;
+  font-size: 14pt;
+  padding: 0px 20px 0px 20px;
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  border-right: 10px solid #000000;
+}
+.framebutton:focus {
+  outline: none;
+}
+.framebutton:hover,
+.framebutton:active {
+  background: #cccc99;
+}
+.framebuttonround {
+  background: #F7C64A;
+  border: none;
+  color: #000000;
+  font-size: 14pt;
+  padding: 0px 20px 0px 20px;
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  -webkit-border-radius: 0px 20px 20px 0px;
+  -moz-border-radius: 0px 20px 20px 0px;
+  border-radius: 0px 20px 20px 0px;
+  min-width: 150px;
+  margin: 0px 0px 0px 10px;
+}
+.framebuttonround:focus {
+  outline: none;
+}
+.framebuttonround:hover,
+.framebuttonround:active {
+  background: #4a7bf7;
 }
