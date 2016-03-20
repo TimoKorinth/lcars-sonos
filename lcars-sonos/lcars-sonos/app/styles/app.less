@@ -43,6 +43,7 @@
 @apricot: #FF9966;
 @purple: #CC6699;
 @orangelight: #F7C64A;
+@red: #e41414;
 
 // Global styles
 html, body {
@@ -103,6 +104,77 @@ app {
     }    
 }
 
+.footer {
+    .flex(0, 0, auto);
+    .flexDisplay;
+    margin: 10px;
+
+    &::before {
+        .flex(0, 0, auto);
+        content: "";
+        width: 50px;
+        background: @orangelight;
+        .borderRadius(20px 0px 0px 20px);
+    }
+
+    & > .title {
+        .flex(1, 1, 100%);
+        background: @purplelight;
+
+        & > span {
+            background: @black;
+            color: @orangelight;
+            font-size: 24pt;
+            padding: 0px 10px 0px 10px;
+            display: inline-block;
+        }        
+    } 
+    
+    & > .killbutton {
+        .flex(0, 0, auto);
+        @background: @red;
+
+        min-width: 125px;
+        background: @background;
+        border: none;
+        color: @black;
+        font-size: 14pt;
+        margin: 0px 25px 0px 10px;
+        padding: 0px 20px 0px 20px;
+        position: relative;
+        
+        &:before {
+            content: "";
+            border-right: 10px solid @background;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            right: -15px;
+        }
+
+        &:after {
+            content: "";
+            border-right: 5px solid @background;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            right: -25px;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover, &:active {
+            background: spin(@background, 180);
+
+            &:before, &:after {
+                border-color: spin(@background, 180);
+            }
+        }
+    } 
+}
+
 .frame {
     .flex(1, 1, 100%);
     .flexDisplay;
@@ -115,7 +187,7 @@ app {
         .flex(0, 0, auto);
         .flexDisplay;
         .flexDirectionColumn;
-        width: 200px;
+        min-width: 170px;
 
         & > .sidebaritem {
             .flex(1, 1, 100%);

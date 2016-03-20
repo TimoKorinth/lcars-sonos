@@ -99,6 +99,91 @@ app {
   -moz-border-radius: 0px 20px 20px 0px;
   border-radius: 0px 20px 20px 0px;
 }
+.footer {
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin: 10px;
+}
+.footer::before {
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  content: "";
+  width: 50px;
+  background: #F7C64A;
+  -webkit-border-radius: 20px 0px 0px 20px;
+  -moz-border-radius: 20px 0px 0px 20px;
+  border-radius: 20px 0px 0px 20px;
+}
+.footer > .title {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  background: #CC99CC;
+}
+.footer > .title > span {
+  background: #000000;
+  color: #F7C64A;
+  font-size: 24pt;
+  padding: 0px 10px 0px 10px;
+  display: inline-block;
+}
+.footer > .killbutton {
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  min-width: 125px;
+  background: #e41414;
+  border: none;
+  color: #000000;
+  font-size: 14pt;
+  margin: 0px 25px 0px 10px;
+  padding: 0px 20px 0px 20px;
+  position: relative;
+}
+.footer > .killbutton:before {
+  content: "";
+  border-right: 10px solid #e41414;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: -15px;
+}
+.footer > .killbutton:after {
+  content: "";
+  border-right: 5px solid #e41414;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: -25px;
+}
+.footer > .killbutton:focus {
+  outline: none;
+}
+.footer > .killbutton:hover,
+.footer > .killbutton:active {
+  background: #14e4e4;
+}
+.footer > .killbutton:hover:before,
+.footer > .killbutton:active:before,
+.footer > .killbutton:hover:after,
+.footer > .killbutton:active:after {
+  border-color: #14e4e4;
+}
 .frame {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
@@ -136,7 +221,7 @@ app {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 200px;
+  min-width: 170px;
 }
 .frame > .sidebar > .sidebaritem {
   -webkit-box-flex: 1;
