@@ -177,6 +177,7 @@ app {
 
     & > .content {
         .flex(1, 1, 100%);
+        margin-left: 10px;
     }
 
     & > .sidebar {
@@ -187,10 +188,14 @@ app {
 
         & > .sidebaritem {
             .flex(1, 1, 100%);
-            margin: 10px;
+            margin: 10px 10px 0px 10px;
             @background: @purple;
             background: @purple;
             position: relative;
+
+            &:first-child {
+                margin: 0px 10px 0px 10px;
+            }
 
             &:hover, &:active {
                 background: spin(@background, 180);

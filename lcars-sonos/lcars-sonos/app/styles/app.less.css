@@ -200,6 +200,7 @@ app {
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
+  margin-left: 10px;
 }
 .frame > .sidebar {
   -webkit-box-flex: 0;
@@ -227,9 +228,12 @@ app {
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
-  margin: 10px;
+  margin: 10px 10px 0px 10px;
   background: #CC6699;
   position: relative;
+}
+.frame > .sidebar > .sidebaritem:first-child {
+  margin: 0px 10px 0px 10px;
 }
 .frame > .sidebar > .sidebaritem:hover,
 .frame > .sidebar > .sidebaritem:active {
