@@ -9,7 +9,7 @@
 - Call "npm install --production" in root folder of node-sonos-http-api
 - Create folder on Raspberry Pi (e.g. "Projects\nodesonos") and copy the entire content of node-sonos-http-api folder to this folder
 - Start Windows PowerShell (as administrator)
-- (Optional: Start the WinRM service on your desktop to enable remote connections: "net start WinRM")
+- Start the WinRM service on your desktop to enable remote connections: "net start WinRM"
 - Type "Set-Item WSMan:\localhost\Client\TrustedHosts -Value <machine-name or IP Address>"
 - Now start a session with your Windows IoT Core device: "Enter-PSSession -ComputerName <machine-name or IP Address> -Credential <machine-name or IP Address or localhost>\Administrator"
 - (Optional: Allow Node.exe to communicate through the firewall with the following command: "netsh advfirewall firewall add rule name="Node.js" dir=in action=allow program="C:\Nodejs\node.exe" enable=yes")
