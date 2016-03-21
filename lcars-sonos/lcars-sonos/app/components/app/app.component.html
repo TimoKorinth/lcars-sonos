@@ -9,10 +9,11 @@
         {{zones}}
     </div>
     <div class="sidebar">
-        <button class="sidebaritem"><span>Wohnzimmer</span></button>
-        <button class="sidebaritem"><span>Arbeitszimmer</span></button>
-        <button class="sidebaritem"><span>Küche</span></button>
-        <button class="sidebaritem"><span>Schlafzimmer</span></button>
+        <template ngFor #zone [ngForOf]="zones">
+            <template ngFor #member [ngForOf]="zone.members">
+                <button class="sidebaritem"><span>{{member.roomName}}</span></button>
+            </template>
+        </template>
     </div>
 </div>
 <div class="footer">

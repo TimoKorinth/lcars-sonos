@@ -222,6 +222,32 @@ app {
   -ms-flex-direction: column;
   flex-direction: column;
   min-width: 170px;
+  /*& > .sidebaritem:nth-child(2) {
+            @background: @beige;
+            background: @background;
+
+            &:hover, &:active {
+                background: spin(@background, 180);
+            }
+        }
+
+        & > .sidebaritem:nth-child(3) {
+            @background: @apricot;
+            background: @background;
+
+            &:hover, &:active {
+                background: spin(@background, 180);
+            }
+        }
+
+        & > .sidebaritem:nth-child(5) {
+            @background: @redbrown;
+            background: @background;
+
+            &:hover, &:active {
+                background: spin(@background, 180);
+            }
+        }*/
 }
 .frame > .sidebar > .sidebaritem {
   -webkit-box-flex: 1;
@@ -246,27 +272,6 @@ app {
   position: absolute;
   right: 10px;
   bottom: 10px;
-}
-.frame > .sidebar > .sidebaritem:nth-child(2) {
-  background: #FFCC99;
-}
-.frame > .sidebar > .sidebaritem:nth-child(2):hover,
-.frame > .sidebar > .sidebaritem:nth-child(2):active {
-  background: #99ccff;
-}
-.frame > .sidebar > .sidebaritem:nth-child(3) {
-  background: #FF9966;
-}
-.frame > .sidebar > .sidebaritem:nth-child(3):hover,
-.frame > .sidebar > .sidebaritem:nth-child(3):active {
-  background: #66ccff;
-}
-.frame > .sidebar > .sidebaritem:nth-child(5) {
-  background: #CC6666;
-}
-.frame > .sidebar > .sidebaritem:nth-child(5):hover,
-.frame > .sidebar > .sidebaritem:nth-child(5):active {
-  background: #66cccc;
 }
 .button {
   background: #9999CC;
