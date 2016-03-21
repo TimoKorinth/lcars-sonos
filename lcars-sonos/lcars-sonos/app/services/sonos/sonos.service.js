@@ -29,7 +29,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     this._http = _http;
                 }
                 SonosService.prototype.getZones = function () {
-                    return this._http.get('http://minwinpc:5005/zones')
+                    return this._http.get('http://minwinpc:5005/zones/' + Date.now())
                         .map(function (res) { return res.json(); })
                         .catch(this.handleError);
                 };

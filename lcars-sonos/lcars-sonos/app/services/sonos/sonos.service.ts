@@ -10,7 +10,7 @@ export class SonosService {
     }
 
     getZones() {
-        return this._http.get('http://minwinpc:5005/zones')
+        return this._http.get('http://minwinpc:5005/zones/' + Date.now())
             .map(res => res.json())
             .catch(this.handleError);
     }
