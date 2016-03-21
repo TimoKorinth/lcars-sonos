@@ -231,6 +231,8 @@ app {
   margin: 10px 10px 0px 10px;
   background: #CC6699;
   position: relative;
+  border: none;
+  font-size: 12pt;
 }
 .frame > .sidebar > .sidebaritem:first-child {
   margin: 0px 10px 0px 10px;
