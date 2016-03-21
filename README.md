@@ -14,3 +14,8 @@
 - Now start a session with your Windows IoT Core device: "Enter-PSSession -ComputerName <machine-name or IP Address> -Credential <machine-name or IP Address or localhost>\Administrator"
 - (Optional: Allow Node.exe to communicate through the firewall with the following command: "netsh advfirewall firewall add rule name="Node.js" dir=in action=allow program="C:\Nodejs\node.exe" enable=yes")
 - Create task: "schtasks /create /tn "NodeJS" /tr "c:\Nodejs\node.exe c:\Projects\nodesonos\server.js" /sc onstart /ru SYSTEM"
+
+# CORS
+- Change "sonos-http-api.js" in nodesonos/lib folder. Add the following lines to requestHandler function (just above "res.end();"):
+    - res.setHeader("Access-Control-Allow-Origin", "*");
+    - res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
