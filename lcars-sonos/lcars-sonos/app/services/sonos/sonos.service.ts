@@ -10,27 +10,27 @@ export class SonosService {
     }
 
     getZones() {
-        return this._http.get('http://minwinpc:5005/zones/' + Date.now())
+        return this._http.get('http://minwinpc:5005/zones')
             .map(res => res.json())
             .catch(this.handleError);
     }
 
     play(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/play/' + Date.now()).subscribe(
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/play').subscribe(
             null,
             err => console.error(err)
         );
     }
 
     pause(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/pause/' + Date.now()).subscribe(
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/pause').subscribe(
             null,
             err => console.error(err)
         );
     }
 
     next(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/next/' + Date.now()).subscribe(
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/next').subscribe(
             null,
             err => console.error(err)
         );
