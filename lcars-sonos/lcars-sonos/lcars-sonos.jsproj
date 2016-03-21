@@ -65,6 +65,9 @@
     <Content Include="app\main.js" />
     <Content Include="app\main.js.map" />
     <Content Include="app\main.ts" />
+    <Content Include="app\services\sonos\sonos.service.js" />
+    <Content Include="app\services\sonos\sonos.service.js.map" />
+    <Content Include="app\services\sonos\sonos.service.ts" />
     <Content Include="app\styles\app.less" />
     <Content Include="app\styles\app.less.css" />
     <Content Include="images\**\*" />

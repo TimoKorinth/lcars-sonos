@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
+    var core_1, http_1, sonos_service_1;
     var AppComponent;
     return {
         setters:[
@@ -19,28 +19,39 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (sonos_service_1_1) {
+                sonos_service_1 = sonos_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(http) {
-                    this.http = http;
+                function AppComponent(_http, _sonosService) {
+                    this._http = _http;
+                    this._sonosService = _sonosService;
                 }
+                AppComponent.prototype.ngOnInit = function () {
+                    this.getZones();
+                };
+                AppComponent.prototype.getZones = function () {
+                    var _this = this;
+                    this._sonosService.getZones().then(function (zones) { return _this.zones = zones; });
+                };
                 AppComponent.prototype.play = function () {
-                    this.http.get('http://minwinpc:5005/Arbeitszimmer/play/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
+                    this._http.get('http://minwinpc:5005/Arbeitszimmer/play/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
                 };
                 AppComponent.prototype.pause = function () {
-                    this.http.get('http://minwinpc:5005/Arbeitszimmer/pause/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
+                    this._http.get('http://minwinpc:5005/Arbeitszimmer/pause/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
                 };
                 AppComponent.prototype.next = function () {
-                    this.http.get('http://minwinpc:5005/Arbeitszimmer/next/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
+                    this._http.get('http://minwinpc:5005/Arbeitszimmer/next/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'app',
                         templateUrl: 'app/components/app/app.component.html',
-                        providers: [http_1.HTTP_BINDINGS]
+                        providers: [http_1.HTTP_BINDINGS, sonos_service_1.SonosService]
                     }), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    __metadata('design:paramtypes', [http_1.Http, sonos_service_1.SonosService])
                 ], AppComponent);
                 return AppComponent;
             }());
