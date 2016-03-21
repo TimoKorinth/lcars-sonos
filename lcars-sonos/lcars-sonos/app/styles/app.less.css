@@ -222,32 +222,6 @@ app {
   -ms-flex-direction: column;
   flex-direction: column;
   min-width: 170px;
-  /*& > .sidebaritem:nth-child(2) {
-            @background: @beige;
-            background: @background;
-
-            &:hover, &:active {
-                background: spin(@background, 180);
-            }
-        }
-
-        & > .sidebaritem:nth-child(3) {
-            @background: @apricot;
-            background: @background;
-
-            &:hover, &:active {
-                background: spin(@background, 180);
-            }
-        }
-
-        & > .sidebaritem:nth-child(5) {
-            @background: @redbrown;
-            background: @background;
-
-            &:hover, &:active {
-                background: spin(@background, 180);
-            }
-        }*/
 }
 .frame > .sidebar > .sidebaritem {
   -webkit-box-flex: 1;
@@ -256,17 +230,26 @@ app {
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
   margin: 10px 10px 0px 10px;
-  background: #CC6699;
+  background: #FF9966;
   position: relative;
   border: none;
   font-size: 12pt;
+}
+.frame > .sidebar > .sidebaritem.zone1 {
+  background: #FFCC99;
+}
+.frame > .sidebar > .sidebaritem.zone2 {
+  background: #CC99CC;
+}
+.frame > .sidebar > .sidebaritem.zone3 {
+  background: #CC6666;
 }
 .frame > .sidebar > .sidebaritem:first-child {
   margin: 0px 10px 0px 10px;
 }
 .frame > .sidebar > .sidebaritem:hover,
 .frame > .sidebar > .sidebaritem:active {
-  background: #66cc99;
+  background: #66ccff;
 }
 .frame > .sidebar > .sidebaritem > span {
   position: absolute;

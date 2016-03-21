@@ -6,12 +6,12 @@
 </div>
 <div class="frame">
     <div class="content">
-        {{zones}}
+
     </div>
     <div class="sidebar">
-        <template ngFor #zone [ngForOf]="zones">
+        <template ngFor #zone [ngForOf]="zones" #zoneindex="index">
             <template ngFor #member [ngForOf]="zone.members">
-                <button class="sidebaritem"><span>{{member.roomName}}</span></button>
+                <button class="sidebaritem zone{{zoneindex}}"><span>{{member.roomName}}</span></button>
             </template>
         </template>
     </div>

@@ -190,8 +190,25 @@ app {
         & > .sidebaritem {
             .flex(1, 1, 100%);
             margin: 10px 10px 0px 10px;
-            @background: @purple;
-            background: @purple;
+            
+            @background: @apricot;
+            background: @background;
+
+            &.zone1 {
+                @background: @beige;
+                background: @background;
+            }
+
+            &.zone2 {
+                @background: @purplelight;
+                background: @background;
+            }
+
+            &.zone3 {
+                @background: @redbrown;
+                background: @background;
+            }
+            
             position: relative;
             border: none;
             font-size: 12pt;
@@ -210,33 +227,6 @@ app {
                 bottom: 10px;
             }
         }
-
-        /*& > .sidebaritem:nth-child(2) {
-            @background: @beige;
-            background: @background;
-
-            &:hover, &:active {
-                background: spin(@background, 180);
-            }
-        }
-
-        & > .sidebaritem:nth-child(3) {
-            @background: @apricot;
-            background: @background;
-
-            &:hover, &:active {
-                background: spin(@background, 180);
-            }
-        }
-
-        & > .sidebaritem:nth-child(5) {
-            @background: @redbrown;
-            background: @background;
-
-            &:hover, &:active {
-                background: spin(@background, 180);
-            }
-        }*/
     }
 }
 
