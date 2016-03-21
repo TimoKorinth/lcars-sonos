@@ -15,22 +15,29 @@ export class SonosService {
             .catch(this.handleError);
     }
 
-    play() {
-        this._http.get('http://minwinpc:5005/Arbeitszimmer/play/' + Date.now()).subscribe(
+    play(player) {
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/play/' + Date.now()).subscribe(
             null,
             err => console.error(err)
         );
     }
 
-    pause() {
-        this._http.get('http://minwinpc:5005/Arbeitszimmer/pause/' + Date.now()).subscribe(
+    pause(player) {
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/pause/' + Date.now()).subscribe(
             null,
             err => console.error(err)
         );
     }
 
-    next() {
-        this._http.get('http://minwinpc:5005/Arbeitszimmer/next/' + Date.now()).subscribe(
+    next(player) {
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/next/' + Date.now()).subscribe(
+            null,
+            err => console.error(err)
+        );
+    }
+
+    pauseall() {
+        this._http.get('http://minwinpc:5005/pauseall').subscribe(
             null,
             err => console.error(err)
         );

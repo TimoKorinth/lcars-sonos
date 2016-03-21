@@ -11,19 +11,22 @@
     <div class="sidebar">
         <template ngFor #zone [ngForOf]="zones" #zoneindex="index">
             <template ngFor #member [ngForOf]="zone.members">
-                <button class="sidebaritem zone{{zoneindex}}"><span>{{member.roomName}}</span></button>
+                <button class="sidebaritem zone{{zoneindex}}" (click)="select(member)"><span>{{member.roomName}}</span></button>
             </template>
         </template>
     </div>
 </div>
 <div class="footer">
-    <div class="title">
-        <span>FOOTER</span>
+    <div class="title" *ngIf="selectedPlayer">
+        <span>{{selectedPlayer.roomName}}</span>
+    </div>
+    <div class="title" *ngIf="!selectedPlayer">
+        <span>SELECT PLAYER</span>
     </div>
     <div class="buttons">
-        <button (click)="play()" class="framebutton">START</button>
-        <button (click)="pause()" class="framebutton">STOP</button>
-        <button (click)="next()" class="framebutton">NEXT</button>
+        <button (click)="play()" class="framebutton" *ngIf="selectedPlayer">START</button>
+        <button (click)="pause()" class="framebutton" *ngIf="selectedPlayer">STOP</button>
+        <button (click)="next()" class="framebutton" *ngIf="selectedPlayer">NEXT</button>
     </div>
-    <button class="killbutton">KILL</button>
+    <button class="killbutton" (click)="kill()">KILL</button>
 </div>

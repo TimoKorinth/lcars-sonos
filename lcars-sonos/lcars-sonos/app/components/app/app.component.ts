@@ -10,6 +10,7 @@ import { SonosService } from '../../services/sonos/sonos.service';
 export class AppComponent implements OnInit {
 
     public zones;
+    public selectedPlayer;
 
     constructor(private _sonosService: SonosService) {
     }
@@ -24,17 +25,25 @@ export class AppComponent implements OnInit {
         );
     }
 
+    select(player) {
+        this.selectedPlayer = player;
+    }
+
     play() {
-        this._sonosService.play();
+        this._sonosService.play(this.selectedPlayer);
     }
 
     pause() {
         this.getZones();
-        this._sonosService.pause();
+        this._sonosService.pause(this.selectedPlayer);
     }
 
     next() {
-        this._sonosService.next();
+        this._sonosService.next(this.selectedPlayer);
+    }
+
+    kill() {
+        this._sonosService.pauseall();
     }
 
 }

@@ -33,14 +33,17 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                         .map(function (res) { return res.json(); })
                         .catch(this.handleError);
                 };
-                SonosService.prototype.play = function () {
-                    this._http.get('http://minwinpc:5005/Arbeitszimmer/play/' + Date.now()).subscribe(null, function (err) { return console.error(err); });
+                SonosService.prototype.play = function (player) {
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/play/' + Date.now()).subscribe(null, function (err) { return console.error(err); });
                 };
-                SonosService.prototype.pause = function () {
-                    this._http.get('http://minwinpc:5005/Arbeitszimmer/pause/' + Date.now()).subscribe(null, function (err) { return console.error(err); });
+                SonosService.prototype.pause = function (player) {
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/pause/' + Date.now()).subscribe(null, function (err) { return console.error(err); });
                 };
-                SonosService.prototype.next = function () {
-                    this._http.get('http://minwinpc:5005/Arbeitszimmer/next/' + Date.now()).subscribe(null, function (err) { return console.error(err); });
+                SonosService.prototype.next = function (player) {
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/next/' + Date.now()).subscribe(null, function (err) { return console.error(err); });
+                };
+                SonosService.prototype.pauseall = function () {
+                    this._http.get('http://minwinpc:5005/pauseall').subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.handleError = function (error) {
                     console.error(error);

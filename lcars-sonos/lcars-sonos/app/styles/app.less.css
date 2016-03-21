@@ -247,6 +247,9 @@ app {
 .frame > .sidebar > .sidebaritem:first-child {
   margin: 0px 10px 0px 10px;
 }
+.frame > .sidebar > .sidebaritem:focus {
+  outline: none;
+}
 .frame > .sidebar > .sidebaritem:hover,
 .frame > .sidebar > .sidebaritem:active {
   background: #66ccff;
