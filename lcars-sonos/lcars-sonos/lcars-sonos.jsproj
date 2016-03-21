@@ -68,8 +68,8 @@
     <Content Include="app\services\sonos\sonos.service.js" />
     <Content Include="app\services\sonos\sonos.service.js.map" />
     <Content Include="app\services\sonos\sonos.service.ts" />
+    <Content Include="app\styles\app.css" />
     <Content Include="app\styles\app.less" />
-    <Content Include="app\styles\app.less.css" />
     <Content Include="images\**\*" />
     <Content Include="index.html" />
     <Content Include="node_modules\angular2\bundles\angular2-polyfills.js" />

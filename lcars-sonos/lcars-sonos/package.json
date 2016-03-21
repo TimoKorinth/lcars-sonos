@@ -8,8 +8,7 @@
     "lite-server": "2.1.0",
     "typescript": "1.8.9",
     "typings": "0.7.9",
-    "less": "2.6.1",
-    "watch-less": "0.0.4"
+    "autoless": "0.1.7"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.11",
@@ -25,7 +24,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
-    "less-watch": "watch-less -d app",
+    "less-watch": "autoless app",
     "typings": "typings",
     "postinstall": "typings install"
   }

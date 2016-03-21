@@ -66,7 +66,7 @@ app {
   flex: 0 0 auto;
   content: "";
   width: 50px;
-  background: #F7C64A;
+  background: #f7c64a;
   -webkit-border-radius: 20px 0px 0px 20px;
   -moz-border-radius: 20px 0px 0px 20px;
   border-radius: 20px 0px 0px 20px;
@@ -77,11 +77,11 @@ app {
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
-  background: #CC99CC;
+  background: #cc99cc;
 }
 .header > .title > span {
   background: #000000;
-  color: #F7C64A;
+  color: #f7c64a;
   font-size: 24pt;
   padding: 0px 10px 0px 10px;
   display: inline-block;
@@ -107,7 +107,7 @@ app {
   flex: 0 0 auto;
   content: "";
   width: 50px;
-  background: #F7C64A;
+  background: #f7c64a;
   -webkit-border-radius: 20px 0px 0px 20px;
   -moz-border-radius: 20px 0px 0px 20px;
   border-radius: 20px 0px 0px 20px;
@@ -121,7 +121,7 @@ app {
 }
 .footer > .title > span {
   background: #000000;
-  color: #F7C64A;
+  color: #f7c64a;
   font-size: 24pt;
   padding: 0px 10px 0px 10px;
   display: inline-block;
@@ -137,7 +137,7 @@ app {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  background: #CC99CC;
+  background: #cc99cc;
 }
 .footer > .killbutton {
   -webkit-box-flex: 0;
@@ -230,19 +230,19 @@ app {
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
   margin: 10px 10px 0px 10px;
-  background: #FF9966;
+  background: #ff9966;
   position: relative;
   border: none;
   font-size: 12pt;
 }
 .frame > .sidebar > .sidebaritem.zone1 {
-  background: #FFCC99;
+  background: #ffcc99;
 }
 .frame > .sidebar > .sidebaritem.zone2 {
-  background: #CC99CC;
+  background: #cc99cc;
 }
 .frame > .sidebar > .sidebaritem.zone3 {
-  background: #CC6666;
+  background: #cc6666;
 }
 .frame > .sidebar > .sidebaritem:first-child {
   margin: 0px 10px 0px 10px;
@@ -260,7 +260,7 @@ app {
   bottom: 10px;
 }
 .button {
-  background: #9999CC;
+  background: #9999cc;
   border: none;
   color: #000000;
   font-size: 14pt;
@@ -278,7 +278,7 @@ app {
   background: #cccc99;
 }
 .framebutton {
-  background: #9999CC;
+  background: #9999cc;
   border: none;
   color: #000000;
   font-size: 14pt;
@@ -298,7 +298,7 @@ app {
   background: #cccc99;
 }
 .framebuttonround {
-  background: #F7C64A;
+  background: #f7c64a;
   border: none;
   color: #000000;
   font-size: 14pt;
