@@ -25,8 +25,7 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(_http, _sonosService) {
-                    this._http = _http;
+                function AppComponent(_sonosService) {
                     this._sonosService = _sonosService;
                 }
                 AppComponent.prototype.ngOnInit = function () {
@@ -34,24 +33,25 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                 };
                 AppComponent.prototype.getZones = function () {
                     var _this = this;
-                    this._sonosService.getZones().then(function (zones) { return _this.zones = zones; });
+                    this._sonosService.getZones().subscribe(function (zones) { _this.zones = zones; });
                 };
                 AppComponent.prototype.play = function () {
-                    this._http.get('http://minwinpc:5005/Arbeitszimmer/play/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
+                    this._sonosService.play();
                 };
                 AppComponent.prototype.pause = function () {
-                    this._http.get('http://minwinpc:5005/Arbeitszimmer/pause/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
+                    this.getZones();
+                    this._sonosService.pause();
                 };
                 AppComponent.prototype.next = function () {
-                    this._http.get('http://minwinpc:5005/Arbeitszimmer/next/' + Date.now()).subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
+                    this._sonosService.next();
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'app',
                         templateUrl: 'app/components/app/app.component.html',
-                        providers: [http_1.HTTP_BINDINGS, sonos_service_1.SonosService]
+                        providers: [http_1.HTTP_PROVIDERS, sonos_service_1.SonosService]
                     }), 
-                    __metadata('design:paramtypes', [http_1.Http, sonos_service_1.SonosService])
+                    __metadata('design:paramtypes', [sonos_service_1.SonosService])
                 ], AppComponent);
                 return AppComponent;
             }());

@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,23 +10,45 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, http_1, Observable_1;
     var SonosService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (Observable_1_1) {
+                Observable_1 = Observable_1_1;
             }],
         execute: function() {
             SonosService = (function () {
-                function SonosService() {
+                function SonosService(_http) {
+                    this._http = _http;
                 }
                 SonosService.prototype.getZones = function () {
-                    return Promise.resolve('Test123');
+                    return this._http.get('http://minwinpc:5005/zones')
+                        .map(function (res) { return res.json(); })
+                        .catch(this.handleError);
+                };
+                SonosService.prototype.play = function () {
+                    this._http.get('http://minwinpc:5005/Arbeitszimmer/play/' + Date.now()).subscribe(null, function (err) { return console.error(err); });
+                };
+                SonosService.prototype.pause = function () {
+                    this._http.get('http://minwinpc:5005/Arbeitszimmer/pause/' + Date.now()).subscribe(null, function (err) { return console.error(err); });
+                };
+                SonosService.prototype.next = function () {
+                    this._http.get('http://minwinpc:5005/Arbeitszimmer/next/' + Date.now()).subscribe(null, function (err) { return console.error(err); });
+                };
+                SonosService.prototype.handleError = function (error) {
+                    console.error(error);
+                    return Observable_1.Observable.throw(error.json().error || 'Server error');
                 };
                 SonosService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], SonosService);
                 return SonosService;
             }());
