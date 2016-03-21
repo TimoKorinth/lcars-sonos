@@ -3,7 +3,7 @@ import { Http, HTTP_BINDINGS } from 'angular2/http';
 
 @Component({
     selector: 'app',
-    templateUrl: 'app/app.component.html',
+    templateUrl: 'app/components/app/app.component.html',
     providers: [HTTP_BINDINGS]
 })
 export class AppComponent {

@@ -37,7 +37,7 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'app',
-                        templateUrl: 'app/app.component.html',
+                        templateUrl: 'app/components/app/app.component.html',
                         providers: [http_1.HTTP_BINDINGS]
                     }), 
                     __metadata('design:paramtypes', [http_1.Http])

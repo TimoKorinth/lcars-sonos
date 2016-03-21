@@ -58,7 +58,15 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="app\**\*" />
+    <Content Include="app\components\app\app.component.html" />
+    <Content Include="app\components\app\app.component.js" />
+    <Content Include="app\components\app\app.component.js.map" />
+    <Content Include="app\components\app\app.component.ts" />
+    <Content Include="app\main.js" />
+    <Content Include="app\main.js.map" />
+    <Content Include="app\main.ts" />
+    <Content Include="app\styles\app.less" />
+    <Content Include="app\styles\app.less.css" />
     <Content Include="images\**\*" />
     <Content Include="index.html" />
     <Content Include="node_modules\angular2\bundles\angular2-polyfills.js" />
