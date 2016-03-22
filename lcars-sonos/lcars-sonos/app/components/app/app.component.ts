@@ -62,6 +62,10 @@ export class AppComponent implements OnInit {
         this._sonosService.pause(this.selectedPlayer);
     }
 
+    prev() {
+        this._sonosService.prev(this.selectedPlayer);
+    }
+
     next() {
         this._sonosService.next(this.selectedPlayer);
     }

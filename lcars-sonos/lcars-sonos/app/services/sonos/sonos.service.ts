@@ -41,6 +41,13 @@ export class SonosService {
         );
     }
 
+    prev(player) {
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/previous').subscribe(
+            null,
+            err => console.error(err)
+        );
+    }
+
     next(player) {
         this._http.get('http://minwinpc:5005/' + player.roomName + '/next').subscribe(
             null,

@@ -51,6 +51,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                 SonosService.prototype.pause = function (player) {
                     this._http.get('http://minwinpc:5005/' + player.roomName + '/pause').subscribe(null, function (err) { return console.error(err); });
                 };
+                SonosService.prototype.prev = function (player) {
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/previous').subscribe(null, function (err) { return console.error(err); });
+                };
                 SonosService.prototype.next = function (player) {
                     this._http.get('http://minwinpc:5005/' + player.roomName + '/next').subscribe(null, function (err) { return console.error(err); });
                 };

@@ -59,6 +59,9 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                 AppComponent.prototype.pause = function () {
                     this._sonosService.pause(this.selectedPlayer);
                 };
+                AppComponent.prototype.prev = function () {
+                    this._sonosService.prev(this.selectedPlayer);
+                };
                 AppComponent.prototype.next = function () {
                     this._sonosService.next(this.selectedPlayer);
                 };

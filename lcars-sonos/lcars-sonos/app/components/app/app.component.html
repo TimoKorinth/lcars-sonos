@@ -8,7 +8,7 @@
     <div class="content">
         <div class="imageWrapper">
             <div class="alarmIndicatortop"></div>
-            <img class="coverimg" *ngIf="selectedPlayer && selectedState" [src]="selectedState.currentTrack.absoluteAlbumArtURI" alt="Cover art" />
+            <img class="coverimg" *ngIf="selectedPlayer && selectedState && selectedState.currentTrack.absoluteAlbumArtURI" [src]="selectedState.currentTrack.absoluteAlbumArtURI" alt="Cover art" />
             <div class="alarmIndicatorbottom"></div>
         </div>
         <div>
@@ -34,8 +34,9 @@
         <span>SELECT PLAYER</span>
     </div>
     <div class="buttons">
-        <button (click)="play()" class="framebutton" *ngIf="selectedPlayer">START</button>
-        <button (click)="pause()" class="framebutton" *ngIf="selectedPlayer">STOP</button>
+        <button (click)="prev()" class="framebutton" *ngIf="selectedPlayer">PREV</button>
+        <button (click)="play()" class="framebutton" *ngIf="selectedPlayer && selectedState && (selectedState.playerState === 'PAUSED_PLAYBACK' || selectedState.playerState === 'STOPPED')">START</button>
+        <button (click)="pause()" class="framebutton" *ngIf="selectedPlayer && selectedState && selectedState.playerState === 'PLAYING'">STOP</button>
         <button (click)="next()" class="framebutton" *ngIf="selectedPlayer">NEXT</button>
     </div>
     <button class="killbutton" (click)="kill()">KILL</button>
