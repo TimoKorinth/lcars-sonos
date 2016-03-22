@@ -200,6 +200,77 @@ app {
 .coverimg {
   width: 100%;
 }
+.imageWrapper {
+  position: relative;
+  padding: 50px 30px 50px 30px;
+}
+.imageWrapper:before,
+.imageWrapper:after {
+  content: "";
+  width: 20px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  background: #cc6666;
+}
+.imageWrapper:before {
+  left: 0px;
+}
+.imageWrapper:after {
+  right: 0px;
+}
+.imageWrapper > .alarmIndicatortop {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  right: 30px;
+  height: 15px;
+  background: #cc6666;
+}
+.imageWrapper > .alarmIndicatortop:before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  background: #cc6666;
+  height: 10px;
+  top: 20px;
+}
+.imageWrapper > .alarmIndicatortop:after {
+  content: "";
+  position: absolute;
+  left: 50px;
+  right: 50px;
+  background: #cc6666;
+  height: 5px;
+  top: 35px;
+}
+.imageWrapper > .alarmIndicatorbottom {
+  position: absolute;
+  bottom: 0px;
+  left: 30px;
+  right: 30px;
+  height: 15px;
+  background: #cc6666;
+}
+.imageWrapper > .alarmIndicatorbottom:before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  background: #cc6666;
+  height: 10px;
+  bottom: 20px;
+}
+.imageWrapper > .alarmIndicatorbottom:after {
+  content: "";
+  position: absolute;
+  left: 50px;
+  right: 50px;
+  background: #cc6666;
+  height: 5px;
+  bottom: 35px;
+}
 .frame {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;

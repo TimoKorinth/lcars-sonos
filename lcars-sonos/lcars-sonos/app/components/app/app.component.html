@@ -6,8 +6,10 @@
 </div>
 <div class="frame">
     <div class="content">
-        <div>
+        <div class="imageWrapper">
+            <div class="alarmIndicatortop"></div>
             <img class="coverimg" *ngIf="selectedPlayer" [src]="selectedPlayer.state.currentTrack.absoluteAlbumArtURI" alt="Cover art" />
+            <div class="alarmIndicatorbottom"></div>
         </div>
         <div>
             

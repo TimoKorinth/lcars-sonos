@@ -47,6 +47,12 @@
     border-radius: @radius;
 }
 
+.boxShadow(@horizontalLength: 0, @verticalLength: 0, @blurRadius: 0, @spread: 0, @color: transparent) {
+    -webkit-box-shadow: @horizontalLength @verticalLength @blurRadius @spread @color;
+	-moz-box-shadow: @horizontalLength @verticalLength @blurRadius @spread @color;
+	box-shadow: @horizontalLength @verticalLength @blurRadius @spread @color;
+}
+
 // Color palette
 @white: #FFFFFF;
 @black: #000000;
@@ -190,6 +196,86 @@ app {
 
 .coverimg {
     width: 100%;
+}
+
+.imageWrapper {
+    position: relative;
+    padding: 50px 30px 50px 30px;
+
+    &:before, &:after {
+        content: "";
+        width: 20px;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        background: @redbrown;
+    }
+
+    &:before {
+        left: 0px;
+    }
+
+    &:after {
+        right: 0px;
+    }
+
+    & > .alarmIndicatortop {
+        position: absolute;
+        top: 0px;
+        left: 30px;
+        right: 30px;
+        height: 15px;
+        background: @redbrown;
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            right: 30px;
+            background: @redbrown;
+            height: 10px;
+            top: 20px;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 50px;
+            right: 50px;
+            background: @redbrown;
+            height: 5px;
+            top: 35px;
+        }
+    }
+
+    & > .alarmIndicatorbottom {
+        position: absolute;
+        bottom: 0px;
+        left: 30px;
+        right: 30px;
+        height: 15px;
+        background: @redbrown;
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            right: 30px;
+            background: @redbrown;
+            height: 10px;
+            bottom: 20px;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 50px;
+            right: 50px;
+            background: @redbrown;
+            height: 5px;
+            bottom: 35px;
+        }
+    }
 }
 
 .frame {
