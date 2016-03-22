@@ -29,6 +29,7 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                     this._sonosService = _sonosService;
                 }
                 AppComponent.prototype.ngOnInit = function () {
+                    //this.socket = io('http://localhost:5007');
                     this.getZones();
                 };
                 AppComponent.prototype.getZones = function () {

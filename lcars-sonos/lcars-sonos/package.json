@@ -1,15 +1,5 @@
 {
-  "name": "lcars-sonos",
-  "version": "1.0.0",
   "author": "Timo Korinth",
-  "license": "MIT",
-  "devDependencies": {
-    "concurrently": "2.0.0",
-    "lite-server": "2.1.0",
-    "typescript": "1.8.9",
-    "typings": "0.7.9",
-    "autoless": "0.1.7"
-  },
   "dependencies": {
     "angular2": "2.0.0-beta.11",
     "systemjs": "0.19.24",
@@ -17,15 +7,26 @@
     "es6-shim": "0.35.0",
     "reflect-metadata": "0.1.3",
     "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.6.4"
+    "zone.js": "0.6.4",
+    "socket.io-client": "1.4.5"
   },
+  "devDependencies": {
+    "concurrently": "2.0.0",
+    "lite-server": "2.1.0",
+    "typescript": "1.8.9",
+    "typings": "0.7.9",
+    "autoless": "0.1.7"
+  },
+  "license": "MIT",
+  "name": "lcars-sonos",
   "scripts": {
+    "less-watch": "autoless app",
+    "lite": "lite-server",
+    "postinstall": "typings install",
     "start": "concurrently \"npm run tsc:w\" \"npm run less-watch\" \"npm run lite\"",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "lite": "lite-server",
-    "less-watch": "autoless app",
-    "typings": "typings",
-    "postinstall": "typings install"
-  }
+    "typings": "typings"
+  },
+  "version": "1.0.0"
 }

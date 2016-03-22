@@ -12,10 +12,14 @@ export class AppComponent implements OnInit {
     public zones;
     public selectedPlayer;
 
+    socket: SocketIOClient.Socket;
+
     constructor(private _sonosService: SonosService) {
     }
 
     ngOnInit() {
+        //this.socket = io('http://localhost:5007');
+
         this.getZones();
     }
 
