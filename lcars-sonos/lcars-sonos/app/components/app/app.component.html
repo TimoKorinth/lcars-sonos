@@ -6,7 +6,15 @@
 </div>
 <div class="frame">
     <div class="content">
-        <img height="300" *ngIf="selectedPlayer" [src]="selectedPlayer.state.currentTrack.absoluteAlbumArtURI" alt="Cover art" />
+        <div>
+            <img class="coverimg" *ngIf="selectedPlayer" [src]="selectedPlayer.state.currentTrack.absoluteAlbumArtURI" alt="Cover art" />
+        </div>
+        <div>
+            
+        </div>
+        <div>
+
+        </div>
     </div>
     <div class="sidebar">
         <template ngFor #zone [ngForOf]="zones" #zoneindex="index">

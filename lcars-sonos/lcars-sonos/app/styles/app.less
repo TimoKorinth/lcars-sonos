@@ -25,6 +25,22 @@
     flex-direction: column;
 }
 
+.flexJustifyContentCenter {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.flexAlignItemsCenter {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
 .borderRadius(@radius: 0) {
     -webkit-border-radius: @radius;
     -moz-border-radius: @radius;
@@ -172,13 +188,24 @@ app {
     } 
 }
 
+.coverimg {
+    width: 100%;
+}
+
 .frame {
     .flex(1, 1, 100%);
     .flexDisplay;
 
     & > .content {
         .flex(1, 1, 100%);
+        .flexDisplay;
+        .flexAlignItemsCenter;
+        overflow: hidden;
         margin-left: 10px;
+
+        & > div {
+            .flex(1, 1, 100%);
+        }
     }
 
     & > .sidebar {
