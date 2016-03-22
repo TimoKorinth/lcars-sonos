@@ -16,8 +16,14 @@ export class SonosService {
     }
 
     getZonesPoll() {
-        return Observable.interval(2000)
+        return Observable.interval(5000)
             .switchMap(() => this._http.get('http://minwinpc:5005/zones'))
+            .map((res: Response) => res.json());
+    }
+
+    getStatePoll(player) {
+        return Observable.interval(5000)
+            .switchMap(() => this._http.get('http://minwinpc:5005/' + player.roomName + '/state'))
             .map((res: Response) => res.json());
     }
 

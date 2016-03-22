@@ -35,8 +35,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                 };
                 SonosService.prototype.getZonesPoll = function () {
                     var _this = this;
-                    return Observable_1.Observable.interval(2000)
+                    return Observable_1.Observable.interval(5000)
                         .switchMap(function () { return _this._http.get('http://minwinpc:5005/zones'); })
+                        .map(function (res) { return res.json(); });
+                };
+                SonosService.prototype.getStatePoll = function (player) {
+                    var _this = this;
+                    return Observable_1.Observable.interval(5000)
+                        .switchMap(function () { return _this._http.get('http://minwinpc:5005/' + player.roomName + '/state'); })
                         .map(function (res) { return res.json(); });
                 };
                 SonosService.prototype.play = function (player) {

@@ -30,17 +30,28 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                 }
                 AppComponent.prototype.ngOnInit = function () {
                     //this.socket = io('http://localhost:5007');
-                    this.getZones();
+                    this.getZonesOnce();
+                    this.getZonesPoll();
                 };
-                AppComponent.prototype.getZones = function () {
+                AppComponent.prototype.getZonesOnce = function () {
                     var _this = this;
-                    //this._sonosService.getZones().subscribe(
-                    //    zones => { this.zones = zones }
-                    //);
+                    this._sonosService.getZones().subscribe(function (zones) { _this.zones = zones; });
+                };
+                AppComponent.prototype.getZonesPoll = function () {
+                    var _this = this;
                     this._sonosService.getZonesPoll().subscribe(function (zones) { _this.zones = zones; });
+                };
+                AppComponent.prototype.getState = function () {
+                    var _this = this;
+                    if (this.latestStatePoll) {
+                        this.latestStatePoll.unsubscribe();
+                    }
+                    this.latestStatePoll = this._sonosService.getStatePoll(this.selectedPlayer).subscribe(function (state) { _this.selectedState = state; });
                 };
                 AppComponent.prototype.select = function (player) {
                     this.selectedPlayer = player;
+                    this.selectedState = player.state;
+                    this.getState();
                 };
                 AppComponent.prototype.play = function () {
                     this._sonosService.play(this.selectedPlayer);

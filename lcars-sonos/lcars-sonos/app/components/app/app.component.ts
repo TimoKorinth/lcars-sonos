@@ -11,8 +11,10 @@ export class AppComponent implements OnInit {
 
     public zones;
     public selectedPlayer;
+    public selectedState;
 
     socket: SocketIOClient.Socket;
+    latestStatePoll;
 
     constructor(private _sonosService: SonosService) {
     }
@@ -20,20 +22,36 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         //this.socket = io('http://localhost:5007');
 
-        this.getZones();
+        this.getZonesOnce();
+        this.getZonesPoll();
     }
 
-    getZones() {
-        //this._sonosService.getZones().subscribe(
-        //    zones => { this.zones = zones }
-        //);
+    getZonesOnce() {
+        this._sonosService.getZones().subscribe(
+            zones => { this.zones = zones }
+        );
+    }
+
+    getZonesPoll() {
         this._sonosService.getZonesPoll().subscribe(
             zones => { this.zones = zones }
         );
     }
 
+    getState() {
+        if (this.latestStatePoll) {
+            this.latestStatePoll.unsubscribe();
+        }
+
+        this.latestStatePoll = this._sonosService.getStatePoll(this.selectedPlayer).subscribe(
+            state => { this.selectedState = state }
+        );
+    }
+
     select(player) {
         this.selectedPlayer = player;
+        this.selectedState = player.state;
+        this.getState();
     }
 
     play() {

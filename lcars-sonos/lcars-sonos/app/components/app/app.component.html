@@ -8,7 +8,7 @@
     <div class="content">
         <div class="imageWrapper">
             <div class="alarmIndicatortop"></div>
-            <img class="coverimg" *ngIf="selectedPlayer" [src]="selectedPlayer.state.currentTrack.absoluteAlbumArtURI" alt="Cover art" />
+            <img class="coverimg" *ngIf="selectedPlayer && selectedState" [src]="selectedState.currentTrack.absoluteAlbumArtURI" alt="Cover art" />
             <div class="alarmIndicatorbottom"></div>
         </div>
         <div>
