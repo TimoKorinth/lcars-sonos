@@ -12,7 +12,9 @@
             <div class="alarmIndicatorbottom"></div>
         </div>
         <div>
-            
+            <h1 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.title}}</h1>
+            <h2 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.artist}}</h2>
+            <h3 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.album}}</h3>
         </div>
         <div>
 

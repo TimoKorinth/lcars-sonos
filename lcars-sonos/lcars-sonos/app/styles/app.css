@@ -365,6 +365,12 @@ app {
   right: 10px;
   bottom: 10px;
 }
+h1,
+h2,
+h3 {
+  color: #f7c64a;
+  padding: 0px 10px 0px 10px;
+}
 .button {
   background: #9999cc;
   border: none;
