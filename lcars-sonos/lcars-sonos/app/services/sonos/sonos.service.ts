@@ -15,6 +15,12 @@ export class SonosService {
             .catch(this.handleError);
     }
 
+    getZonesPoll() {
+        return Observable.interval(2000)
+            .switchMap(() => this._http.get('http://minwinpc:5005/zones'))
+            .map((res: Response) => res.json());
+    }
+
     play(player) {
         this._http.get('http://minwinpc:5005/' + player.roomName + '/play').subscribe(
             null,

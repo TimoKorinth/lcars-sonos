@@ -34,7 +34,10 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                 };
                 AppComponent.prototype.getZones = function () {
                     var _this = this;
-                    this._sonosService.getZones().subscribe(function (zones) { _this.zones = zones; });
+                    //this._sonosService.getZones().subscribe(
+                    //    zones => { this.zones = zones }
+                    //);
+                    this._sonosService.getZonesPoll().subscribe(function (zones) { _this.zones = zones; });
                 };
                 AppComponent.prototype.select = function (player) {
                     this.selectedPlayer = player;
@@ -43,7 +46,6 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                     this._sonosService.play(this.selectedPlayer);
                 };
                 AppComponent.prototype.pause = function () {
-                    this.getZones();
                     this._sonosService.pause(this.selectedPlayer);
                 };
                 AppComponent.prototype.next = function () {

@@ -24,7 +24,10 @@ export class AppComponent implements OnInit {
     }
 
     getZones() {
-        this._sonosService.getZones().subscribe(
+        //this._sonosService.getZones().subscribe(
+        //    zones => { this.zones = zones }
+        //);
+        this._sonosService.getZonesPoll().subscribe(
             zones => { this.zones = zones }
         );
     }
@@ -38,7 +41,6 @@ export class AppComponent implements OnInit {
     }
 
     pause() {
-        this.getZones();
         this._sonosService.pause(this.selectedPlayer);
     }
 

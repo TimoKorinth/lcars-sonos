@@ -33,6 +33,12 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                         .map(function (res) { return res.json(); })
                         .catch(this.handleError);
                 };
+                SonosService.prototype.getZonesPoll = function () {
+                    var _this = this;
+                    return Observable_1.Observable.interval(2000)
+                        .switchMap(function () { return _this._http.get('http://minwinpc:5005/zones'); })
+                        .map(function (res) { return res.json(); });
+                };
                 SonosService.prototype.play = function (player) {
                     this._http.get('http://minwinpc:5005/' + player.roomName + '/play').subscribe(null, function (err) { return console.error(err); });
                 };
