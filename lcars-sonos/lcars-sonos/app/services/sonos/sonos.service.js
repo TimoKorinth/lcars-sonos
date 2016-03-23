@@ -27,44 +27,69 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             SonosService = (function () {
                 function SonosService(_http) {
                     this._http = _http;
+                    this._headers = new http_1.Headers({
+                        "Cache-Control": "no-cache, no-store, must-revalidate",
+                        "Pragma": "no-cache",
+                        "Expires": "0"
+                    });
                 }
                 SonosService.prototype.getZones = function () {
-                    return this._http.get('http://minwinpc:5005/zones')
+                    return this._http.get('http://minwinpc:5005/zones', {
+                        headers: this._headers
+                    })
                         .map(function (res) { return res.json(); })
                         .catch(this.handleError);
                 };
                 SonosService.prototype.getZonesPoll = function () {
                     var _this = this;
                     return Observable_1.Observable.interval(5000)
-                        .switchMap(function () { return _this._http.get('http://minwinpc:5005/zones'); })
+                        .switchMap(function () { return _this._http.get('http://minwinpc:5005/zones', {
+                        headers: _this._headers
+                    }); })
                         .map(function (res) { return res.json(); });
                 };
                 SonosService.prototype.getStatePoll = function (player) {
                     var _this = this;
                     return Observable_1.Observable.interval(5000)
-                        .switchMap(function () { return _this._http.get('http://minwinpc:5005/' + player.roomName + '/state'); })
+                        .switchMap(function () { return _this._http.get('http://minwinpc:5005/' + player.roomName + '/state', {
+                        headers: _this._headers
+                    }); })
                         .map(function (res) { return res.json(); });
                 };
                 SonosService.prototype.play = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/play').subscribe(null, function (err) { return console.error(err); });
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/play', {
+                        headers: this._headers
+                    }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.pause = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/pause').subscribe(null, function (err) { return console.error(err); });
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/pause', {
+                        headers: this._headers
+                    }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.prev = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/previous').subscribe(null, function (err) { return console.error(err); });
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/previous', {
+                        headers: this._headers
+                    }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.next = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/next').subscribe(null, function (err) { return console.error(err); });
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/next', {
+                        headers: this._headers
+                    }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.pauseall = function () {
-                    this._http.get('http://minwinpc:5005/pauseall').subscribe(null, function (err) { return console.error(err); });
+                    this._http.get('http://minwinpc:5005/pauseall', {
+                        headers: this._headers
+                    }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.volumeDown = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/-5').subscribe(null, function (err) { return console.error(err); });
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/-5', {
+                        headers: this._headers
+                    }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.volumeUp = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/+5').subscribe(null, function (err) { return console.error(err); });
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/+5', {
+                        headers: this._headers
+                    }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.handleError = function (error) {
                     console.error(error);

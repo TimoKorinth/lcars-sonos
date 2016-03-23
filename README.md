@@ -16,6 +16,8 @@
 - Create task: "schtasks /create /tn "NodeJS" /tr "c:\Nodejs\node.exe c:\Projects\nodesonos\server.js" /sc onstart /ru SYSTEM"
 
 # CORS
-- Change "sonos-http-api.js" in nodesonos/lib folder. Add the following lines to requestHandler function (just above "res.end();"):
+- Change "sonos-http-api.js" in nodesonos/lib folder. Add the following lines to requestHandler function (just above "res.write(new Buffer(jsonResponse));"):
     - res.setHeader("Access-Control-Allow-Origin", "*");
-    - res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    - res.setHeader("Access-Control-Request-Method", "POST, GET, OPTIONS");
+    - res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, cache-control, pragma, expires");
+- Change "req.method === 'GET'" in nodesonos/server.js to "req.method === 'GET' || req.method === 'OPTIONS'" (~line 66)
