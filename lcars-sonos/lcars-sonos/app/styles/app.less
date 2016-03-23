@@ -201,6 +201,7 @@ app {
 .imageWrapper {
     position: relative;
     padding: 50px 30px 50px 30px;
+    .flex(1, 1, 35%);
 
     &:before, &:after {
         content: "";
@@ -278,6 +279,32 @@ app {
     }
 }
 
+.infoWrapper {
+    .flex(1, 1, 65%);
+    position: relative;
+
+    &:before {
+        content: "";
+        position: absolute;
+        width: 10px;
+        background: @orangelight;
+        top: 0px;
+        bottom: 0px;
+        left: -10px;
+        border: 5px solid @black;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        top: 5px;
+        bottom: 5px;
+        left: 5px;
+        border-left: 5px dotted @orangelight;
+    }
+}
+
 .frame {
     .flex(1, 1, 100%);
     .flexDisplay;
@@ -288,10 +315,6 @@ app {
         .flexAlignItemsCenter;
         overflow: hidden;
         margin-left: 10px;
-
-        & > div {
-            .flex(1, 1, 100%);
-        }
     }
 
     & > .sidebar {
@@ -349,7 +372,7 @@ app {
 
 h1, h2, h3 {
     color: @orangelight;
-    padding: 0px 10px 0px 10px;      
+    margin: 5px 10px 5px 20px;   
 }
 
 // Buttons

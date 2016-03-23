@@ -203,6 +203,11 @@ app {
 .imageWrapper {
   position: relative;
   padding: 50px 30px 50px 30px;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 35%;
+  -ms-flex: 1 1 35%;
+  flex: 1 1 35%;
 }
 .imageWrapper:before,
 .imageWrapper:after {
@@ -271,6 +276,33 @@ app {
   height: 5px;
   bottom: 35px;
 }
+.infoWrapper {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 65%;
+  -ms-flex: 1 1 65%;
+  flex: 1 1 65%;
+  position: relative;
+}
+.infoWrapper:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  background: #f7c64a;
+  top: 0px;
+  bottom: 0px;
+  left: -10px;
+  border: 5px solid #000000;
+}
+.infoWrapper:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  border-left: 5px dotted #f7c64a;
+}
 .frame {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
@@ -301,13 +333,6 @@ app {
   align-items: center;
   overflow: hidden;
   margin-left: 10px;
-}
-.frame > .content > div {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -webkit-flex: 1 1 100%;
-  -ms-flex: 1 1 100%;
-  flex: 1 1 100%;
 }
 .frame > .sidebar {
   -webkit-box-flex: 0;
@@ -369,7 +394,7 @@ h1,
 h2,
 h3 {
   color: #f7c64a;
-  padding: 0px 10px 0px 10px;
+  margin: 5px 10px 5px 20px;
 }
 .button {
   background: #9999cc;
