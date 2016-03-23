@@ -200,6 +200,9 @@ app {
 .coverimg {
   width: 100%;
 }
+.nextimg {
+  margin-left: 20px;
+}
 .imageWrapper {
   position: relative;
   padding: 50px 30px 50px 30px;
@@ -276,12 +279,16 @@ app {
   height: 5px;
   bottom: 35px;
 }
-.infoWrapper {
+.contentWrapper {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -webkit-flex: 1 1 65%;
   -ms-flex: 1 1 65%;
   flex: 1 1 65%;
+  position: relative;
+}
+.infoWrapper {
+  margin: 20px 0px 30px 0px;
   position: relative;
 }
 .infoWrapper:before {
@@ -392,7 +399,8 @@ app {
 }
 h1,
 h2,
-h3 {
+h3,
+h4 {
   color: #f7c64a;
   margin: 5px 10px 5px 20px;
 }

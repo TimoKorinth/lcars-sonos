@@ -11,10 +11,16 @@
             <img class="coverimg" *ngIf="selectedPlayer && selectedState && selectedState.currentTrack.absoluteAlbumArtURI" [src]="selectedState.currentTrack.absoluteAlbumArtURI" alt="Cover art" />
             <div class="alarmIndicatorbottom"></div>
         </div>
-        <div class="infoWrapper">
-            <h1 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.title}}</h1>
-            <h2 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.artist}}</h2>
-            <h3 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.album}}</h3>
+        <div class="contentWrapper">
+            <div class="infoWrapper">
+                <h1 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.title}}</h1>
+                <h2 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.artist}}</h2>
+                <h3 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.album}}</h3>
+            </div>
+            <div class="infoWrapper">                
+                <h4 *ngIf="selectedState && selectedState.currentTrack">NEXT UP</h4>
+                <img class="nextimg" height="70" *ngIf="selectedPlayer && selectedState && selectedState.nextTrack.absoluteAlbumArtURI" [src]="selectedState.nextTrack.absoluteAlbumArtURI" alt="Next track" />
+            </div>
         </div>
     </div>
     <div class="sidebar">
