@@ -331,55 +331,66 @@ app {
         .flexDisplay;
         .flexDirectionColumn;
         min-width: 170px;
+    }
+}
 
-        & > .sidebaritem {
-            .flex(1, 1, 100%);
-            margin: 10px 10px 0px 10px;
-            position: relative;
-            border: none;
-            font-size: 12pt;
+.sidebaritem {
+    .flex(1, 1, 100%);
+    margin: 10px 10px 0px 10px;
+    position: relative;
+    border: none;
+    font-size: 12pt;
 
-            @background: @apricot;
-            background: @background;
+    @background: @apricot;
+    background: @background;
 
-            &.zone1 {
-                @background: @beige;
-                background: @background;
-            }
+    &.zone1 {
+        @background: @beige;
+        background: @background;
+    }
 
-            &.zone2 {
-                @background: @purplelight;
-                background: @background;
-            }
+    &.zone2 {
+        @background: @purplelight;
+        background: @background;
+    }
 
-            &.zone3 {
-                @background: @redbrown;
-                background: @background;
-            }
+    &.zone3 {
+        @background: @redbrown;
+        background: @background;
+    }
 
-            &:first-child {
-                margin: 0px 10px 0px 10px;
-            }
+    &:first-child {
+        margin: 0px 10px 0px 10px;
+    }
 
-            &:focus {
-                outline: none;
-            }
+    &:focus {
+        outline: none;
+    }
 
-            &:hover, &:active {
-                background: spin(@background, 180);
-            }
+    &:hover, &:active {
+        background: spin(@background, 180);
+    }
 
-            & > span {
-                position: absolute;
-                right: 10px;
-                bottom: 10px;
-            }
+    & > span {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
 
-            &:before, &:after {
-                content: "";
-                position: absolute;
-            }
-        }
+    &.PLAYING:before, &.PLAYING:after {
+        content: "";
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        left: 10px;
+        height: 5px;
+        background: @black;
+    }
+
+    &.PLAYING:after {
+        top: 15px;
+        right: 30px;
+        left: 30px;
     }
 }
 

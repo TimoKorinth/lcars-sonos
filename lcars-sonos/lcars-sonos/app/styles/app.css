@@ -361,7 +361,7 @@ app {
   flex-direction: column;
   min-width: 170px;
 }
-.frame > .sidebar > .sidebaritem {
+.sidebaritem {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -webkit-flex: 1 1 100%;
@@ -373,34 +373,44 @@ app {
   font-size: 12pt;
   background: #ff9966;
 }
-.frame > .sidebar > .sidebaritem.zone1 {
+.sidebaritem.zone1 {
   background: #ffcc99;
 }
-.frame > .sidebar > .sidebaritem.zone2 {
+.sidebaritem.zone2 {
   background: #cc99cc;
 }
-.frame > .sidebar > .sidebaritem.zone3 {
+.sidebaritem.zone3 {
   background: #cc6666;
 }
-.frame > .sidebar > .sidebaritem:first-child {
+.sidebaritem:first-child {
   margin: 0px 10px 0px 10px;
 }
-.frame > .sidebar > .sidebaritem:focus {
+.sidebaritem:focus {
   outline: none;
 }
-.frame > .sidebar > .sidebaritem:hover,
-.frame > .sidebar > .sidebaritem:active {
+.sidebaritem:hover,
+.sidebaritem:active {
   background: #66ccff;
 }
-.frame > .sidebar > .sidebaritem > span {
+.sidebaritem > span {
   position: absolute;
   right: 10px;
   bottom: 10px;
 }
-.frame > .sidebar > .sidebaritem:before,
-.frame > .sidebar > .sidebaritem:after {
+.sidebaritem.PLAYING:before,
+.sidebaritem.PLAYING:after {
   content: "";
   position: absolute;
+  top: 5px;
+  right: 10px;
+  left: 10px;
+  height: 5px;
+  background: #000000;
+}
+.sidebaritem.PLAYING:after {
+  top: 15px;
+  right: 30px;
+  left: 30px;
 }
 h1,
 h2,

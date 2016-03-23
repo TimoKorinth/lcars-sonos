@@ -26,7 +26,7 @@
     <div class="sidebar">
         <template ngFor #zone [ngForOf]="zones" #zoneindex="index" [ngForTrackBy]="trackByZones">
             <template ngFor #member [ngForOf]="zone.members" [ngForTrackBy]="trackByMembers">
-                <button class="sidebaritem zone{{zoneindex}}" (click)="select(member)"><span>{{member.roomName}}</span></button>
+                <button class="sidebaritem zone{{zoneindex}} {{member.state.zoneState}}" (click)="select(member)"><span>{{member.roomName}}</span></button>
             </template>
         </template>
     </div>
@@ -40,8 +40,8 @@
     </div>
     <div class="buttons">
         <button (click)="prev()" class="framebutton" *ngIf="selectedPlayer">PREV</button>
-        <button (click)="play()" class="framebutton" *ngIf="selectedPlayer && selectedState && (selectedState.playerState === 'PAUSED_PLAYBACK' || selectedState.playerState === 'STOPPED')">START</button>
-        <button (click)="pause()" class="framebutton" *ngIf="selectedPlayer && selectedState && selectedState.playerState === 'PLAYING'">STOP</button>
+        <button (click)="play()" class="framebutton" *ngIf="selectedPlayer && selectedState && selectedState.zoneState !== 'PLAYING'">START</button>
+        <button (click)="pause()" class="framebutton" *ngIf="selectedPlayer && selectedState && selectedState.zoneState === 'PLAYING'">STOP</button>
         <button (click)="next()" class="framebutton" *ngIf="selectedPlayer">NEXT</button>
     </div>
     <button class="killbutton" (click)="kill()">KILL</button>
