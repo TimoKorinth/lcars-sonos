@@ -74,4 +74,12 @@ export class AppComponent implements OnInit {
         this._sonosService.pauseall();
     }
 
+    volumeDown() {
+        this._sonosService.volumeDown(this.selectedPlayer);
+    }
+
+    volumeUp() {
+        this._sonosService.volumeUp(this.selectedPlayer);
+    }
+
 }

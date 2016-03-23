@@ -68,6 +68,12 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                 AppComponent.prototype.kill = function () {
                     this._sonosService.pauseall();
                 };
+                AppComponent.prototype.volumeDown = function () {
+                    this._sonosService.volumeDown(this.selectedPlayer);
+                };
+                AppComponent.prototype.volumeUp = function () {
+                    this._sonosService.volumeUp(this.selectedPlayer);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'app',

@@ -62,6 +62,20 @@ export class SonosService {
         );
     }
 
+    volumeDown(player) {
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/-5').subscribe(
+            null,
+            err => console.error(err)
+        );
+    }
+
+    volumeUp(player) {
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/+5').subscribe(
+            null,
+            err => console.error(err)
+        );
+    }
+
     private handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');

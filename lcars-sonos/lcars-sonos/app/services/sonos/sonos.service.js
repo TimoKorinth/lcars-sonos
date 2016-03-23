@@ -60,6 +60,12 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                 SonosService.prototype.pauseall = function () {
                     this._http.get('http://minwinpc:5005/pauseall').subscribe(null, function (err) { return console.error(err); });
                 };
+                SonosService.prototype.volumeDown = function (player) {
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/-5').subscribe(null, function (err) { return console.error(err); });
+                };
+                SonosService.prototype.volumeUp = function (player) {
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/+5').subscribe(null, function (err) { return console.error(err); });
+                };
                 SonosService.prototype.handleError = function (error) {
                     console.error(error);
                     return Observable_1.Observable.throw(error.json().error || 'Server error');
