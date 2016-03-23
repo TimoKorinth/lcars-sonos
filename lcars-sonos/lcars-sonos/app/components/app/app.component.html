@@ -24,8 +24,8 @@
         </div>
     </div>
     <div class="sidebar">
-        <template ngFor #zone [ngForOf]="zones" #zoneindex="index">
-            <template ngFor #member [ngForOf]="zone.members">
+        <template ngFor #zone [ngForOf]="zones" #zoneindex="index" [ngForTrackBy]="trackByZones">
+            <template ngFor #member [ngForOf]="zone.members" [ngForTrackBy]="trackByMembers">
                 <button class="sidebaritem zone{{zoneindex}}" (click)="select(member)"><span>{{member.roomName}}</span></button>
             </template>
         </template>

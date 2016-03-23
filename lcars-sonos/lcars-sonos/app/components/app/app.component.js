@@ -33,6 +33,12 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                     this.getZonesOnce();
                     this.getZonesPoll();
                 };
+                AppComponent.prototype.trackByZones = function (index, zone) {
+                    return zone.uuid;
+                };
+                AppComponent.prototype.trackByMembers = function (index, member) {
+                    return member.uuid;
+                };
                 AppComponent.prototype.getZonesOnce = function () {
                     var _this = this;
                     this._sonosService.getZones().subscribe(function (zones) { _this.zones = zones; });

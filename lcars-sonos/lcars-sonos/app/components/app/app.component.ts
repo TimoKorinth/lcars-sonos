@@ -26,6 +26,14 @@ export class AppComponent implements OnInit {
         this.getZonesPoll();
     }
 
+    trackByZones(index: number, zone) {
+        return zone.uuid;
+    }
+
+    trackByMembers(index: number, member) {
+        return member.uuid;
+    }
+
     getZonesOnce() {
         this._sonosService.getZones().subscribe(
             zones => { this.zones = zones }

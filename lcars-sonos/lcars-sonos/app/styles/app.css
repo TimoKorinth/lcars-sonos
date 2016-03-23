@@ -368,10 +368,10 @@ app {
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
   margin: 10px 10px 0px 10px;
-  background: #ff9966;
   position: relative;
   border: none;
   font-size: 12pt;
+  background: #ff9966;
 }
 .frame > .sidebar > .sidebaritem.zone1 {
   background: #ffcc99;
@@ -396,6 +396,11 @@ app {
   position: absolute;
   right: 10px;
   bottom: 10px;
+}
+.frame > .sidebar > .sidebaritem:before,
+.frame > .sidebar > .sidebaritem:after {
+  content: "";
+  position: absolute;
 }
 h1,
 h2,

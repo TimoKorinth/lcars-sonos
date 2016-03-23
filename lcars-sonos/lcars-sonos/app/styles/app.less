@@ -335,7 +335,10 @@ app {
         & > .sidebaritem {
             .flex(1, 1, 100%);
             margin: 10px 10px 0px 10px;
-            
+            position: relative;
+            border: none;
+            font-size: 12pt;
+
             @background: @apricot;
             background: @background;
 
@@ -353,10 +356,6 @@ app {
                 @background: @redbrown;
                 background: @background;
             }
-            
-            position: relative;
-            border: none;
-            font-size: 12pt;
 
             &:first-child {
                 margin: 0px 10px 0px 10px;
@@ -374,6 +373,11 @@ app {
                 position: absolute;
                 right: 10px;
                 bottom: 10px;
+            }
+
+            &:before, &:after {
+                content: "";
+                position: absolute;
             }
         }
     }
