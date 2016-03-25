@@ -38,3 +38,6 @@ In order to communicate with your local SONOS system, it uses node-sonos-http-ap
     - res.setHeader("Access-Control-Request-Method", "POST, GET, OPTIONS");
     - res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, cache-control, pragma, expires");
 - Change "req.method === 'GET'" in nodesonos/server.js to "req.method === 'GET' || req.method === 'OPTIONS'" (~line 66)
+
+## Bugfixing
+- In order to get the volume controls working on a RaspberryPi (at least for me), you have to add the line "console.log(replaceTable);" to "nodesonos/node_modules/sonos-discovery/lib/sonos.js" in the function "String.prototype.format" (~line 64).
