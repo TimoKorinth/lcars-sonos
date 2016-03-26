@@ -25,7 +25,8 @@
                 <h3 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.album}}</h3>
             </div>
             <div class="infoWrapper">                
-                <h4 *ngIf="selectedState && selectedState.currentTrack">NEXT UP</h4>
+                <h4 *ngIf="selectedState && selectedState.nextTrack">NEXT UP</h4>
+                <h4 *ngIf="selectedState && selectedState.nextTrack">{{selectedState.nextTrack.artist}}</h4>
                 <img class="nextimg" height="70" *ngIf="selectedPlayer && selectedState && selectedState.nextTrack.absoluteAlbumArtURI" [src]="selectedState.nextTrack.absoluteAlbumArtURI" alt="Next track" />
             </div>
         </div>

@@ -438,6 +438,15 @@ h4 {
   color: #f7c64a;
   margin: 5px 10px 5px 20px;
 }
+h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.2em;
+  max-height: 2.4em;
+}
 .button {
   background: #9999cc;
   border: none;
