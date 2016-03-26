@@ -46,7 +46,13 @@ export class AppComponent implements OnInit {
         );
     }
 
-    getState() {
+    getStateOnce() {
+        this._sonosService.getState(this.selectedPlayer).subscribe(
+            state => { this.selectedState = state }
+        );
+    }
+
+    getStatePoll() {
         if (this.latestStatePoll) {
             this.latestStatePoll.unsubscribe();
         }
@@ -59,23 +65,27 @@ export class AppComponent implements OnInit {
     select(player) {
         this.selectedPlayer = player;
         this.selectedState = player.state;
-        this.getState();
+        this.getStatePoll();
     }
 
     play() {
         this._sonosService.play(this.selectedPlayer);
+        this.getStateOnce();
     }
 
     pause() {
         this._sonosService.pause(this.selectedPlayer);
+        this.getStateOnce();
     }
 
     prev() {
         this._sonosService.prev(this.selectedPlayer);
+        this.getStateOnce();
     }
 
     next() {
         this._sonosService.next(this.selectedPlayer);
+        this.getStateOnce();
     }
 
     kill() {
@@ -84,10 +94,12 @@ export class AppComponent implements OnInit {
 
     volumeDown() {
         this._sonosService.volumeDown(this.selectedPlayer);
+        this.getStateOnce();
     }
 
     volumeUp() {
         this._sonosService.volumeUp(this.selectedPlayer);
+        this.getStateOnce();
     }
 
 }

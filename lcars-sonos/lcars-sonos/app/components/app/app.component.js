@@ -47,7 +47,11 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                     var _this = this;
                     this._sonosService.getZonesPoll().subscribe(function (zones) { _this.zones = zones; });
                 };
-                AppComponent.prototype.getState = function () {
+                AppComponent.prototype.getStateOnce = function () {
+                    var _this = this;
+                    this._sonosService.getState(this.selectedPlayer).subscribe(function (state) { _this.selectedState = state; });
+                };
+                AppComponent.prototype.getStatePoll = function () {
                     var _this = this;
                     if (this.latestStatePoll) {
                         this.latestStatePoll.unsubscribe();
@@ -57,28 +61,34 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                 AppComponent.prototype.select = function (player) {
                     this.selectedPlayer = player;
                     this.selectedState = player.state;
-                    this.getState();
+                    this.getStatePoll();
                 };
                 AppComponent.prototype.play = function () {
                     this._sonosService.play(this.selectedPlayer);
+                    this.getStateOnce();
                 };
                 AppComponent.prototype.pause = function () {
                     this._sonosService.pause(this.selectedPlayer);
+                    this.getStateOnce();
                 };
                 AppComponent.prototype.prev = function () {
                     this._sonosService.prev(this.selectedPlayer);
+                    this.getStateOnce();
                 };
                 AppComponent.prototype.next = function () {
                     this._sonosService.next(this.selectedPlayer);
+                    this.getStateOnce();
                 };
                 AppComponent.prototype.kill = function () {
                     this._sonosService.pauseall();
                 };
                 AppComponent.prototype.volumeDown = function () {
                     this._sonosService.volumeDown(this.selectedPlayer);
+                    this.getStateOnce();
                 };
                 AppComponent.prototype.volumeUp = function () {
                     this._sonosService.volumeUp(this.selectedPlayer);
+                    this.getStateOnce();
                 };
                 AppComponent = __decorate([
                     core_1.Component({

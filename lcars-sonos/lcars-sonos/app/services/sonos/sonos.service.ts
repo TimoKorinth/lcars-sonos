@@ -19,8 +19,8 @@ export class SonosService {
         return this._http.get('http://minwinpc:5005/zones', {
             headers: this._headers
         })
-            .map(res => res.json())
-            .catch(this.handleError);
+        .map(res => res.json())
+        .catch(this.handleError);
     }
 
     getZonesPoll() {
@@ -29,6 +29,14 @@ export class SonosService {
                 headers: this._headers
             }))
             .map((res: Response) => res.json());
+    }
+
+    getState(player) {
+        return this._http.get('http://minwinpc:5005/' + player.roomName + '/state', {
+            headers: this._headers
+        })
+        .map(res => res.json())
+        .catch(this.handleError);
     }
 
     getStatePoll(player) {

@@ -48,6 +48,13 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     }); })
                         .map(function (res) { return res.json(); });
                 };
+                SonosService.prototype.getState = function (player) {
+                    return this._http.get('http://minwinpc:5005/' + player.roomName + '/state', {
+                        headers: this._headers
+                    })
+                        .map(function (res) { return res.json(); })
+                        .catch(this.handleError);
+                };
                 SonosService.prototype.getStatePoll = function (player) {
                     var _this = this;
                     return Observable_1.Observable.interval(5000)
