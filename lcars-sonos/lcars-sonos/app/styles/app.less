@@ -160,7 +160,12 @@ app {
     & > .buttons {
         .flex(1, 1, 100%);  
         .flexDisplay;
-        background: @purplelight;    
+        background: @purplelight;   
+        
+        & > div {
+            .flex(1, 1, 100%);  
+            .flexDisplay;
+        } 
     } 
     
     & > .killbutton {
@@ -220,6 +225,7 @@ app {
     position: relative;
     padding: 50px 30px 50px 30px;
     .flex(1, 1, 35%);
+    text-align: center;
 
     &:before, &:after {
         content: "";
@@ -294,6 +300,13 @@ app {
             height: 5px;
             bottom: 35px;
         }
+    }
+
+    & > span {
+        color: @redbrown;
+        font-size: 24pt;
+        padding: 0px 10px 0px 10px;
+        display: inline-block;
     }
 }
 

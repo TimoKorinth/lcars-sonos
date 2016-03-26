@@ -16,18 +16,19 @@
         <div class="imageWrapper">
             <div class="alarmIndicatortop"></div>
             <img class="coverimg" *ngIf="selectedPlayer && selectedState && selectedState.currentTrack.absoluteAlbumArtURI" [src]="selectedState.currentTrack.absoluteAlbumArtURI" alt="Cover art" />
+            <span *ngIf="!selectedPlayer || !selectedState || !selectedState.currentTrack.absoluteAlbumArtURI">STOPPED</span>
             <div class="alarmIndicatorbottom"></div>
         </div>
         <div class="contentWrapper">
-            <div class="infoWrapper">
-                <h1 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.title}}</h1>
-                <h2 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.artist}}</h2>
-                <h3 *ngIf="selectedState && selectedState.currentTrack">{{selectedState.currentTrack.album}}</h3>
+            <div class="infoWrapper" *ngIf="selectedState && selectedState.currentTrack.title">
+                <h1>{{selectedState.currentTrack.title}}</h1>
+                <h2>{{selectedState.currentTrack.artist}}</h2>
+                <h3>{{selectedState.currentTrack.album}}</h3>
             </div>
-            <div class="infoWrapper">                
-                <h4 *ngIf="selectedState && selectedState.nextTrack">NEXT UP</h4>
-                <h4 *ngIf="selectedState && selectedState.nextTrack">{{selectedState.nextTrack.artist}}</h4>
-                <img class="nextimg" height="70" *ngIf="selectedPlayer && selectedState && selectedState.nextTrack.absoluteAlbumArtURI" [src]="selectedState.nextTrack.absoluteAlbumArtURI" alt="Next track" />
+            <div class="infoWrapper" *ngIf="selectedState && selectedState.nextTrack.title">                
+                <h4>NEXT UP</h4>
+                <h4>{{selectedState.nextTrack.artist}}</h4>
+                <img class="nextimg" height="70" [src]="selectedState.nextTrack.absoluteAlbumArtURI" alt="Next track" />
             </div>
         </div>
     </div>
@@ -47,10 +48,12 @@
         <span>SELECT PLAYER</span>
     </div>
     <div class="buttons">
-        <button (click)="prev()" class="framebutton" *ngIf="selectedPlayer">PREV</button>
-        <button (click)="play()" class="framebutton" *ngIf="selectedPlayer && selectedState && selectedState.zoneState !== 'PLAYING'">START</button>
-        <button (click)="pause()" class="framebutton" *ngIf="selectedPlayer && selectedState && selectedState.zoneState === 'PLAYING'">STOP</button>
-        <button (click)="next()" class="framebutton" *ngIf="selectedPlayer">NEXT</button>
+        <div *ngIf="selectedPlayer && selectedState && selectedState.zoneState !== 'STOPPED'">
+            <button (click)="prev()" class="framebutton">PREV</button>
+            <button (click)="play()" class="framebutton" *ngIf="selectedState.zoneState !== 'PLAYING'">START</button>
+            <button (click)="pause()" class="framebutton" *ngIf="selectedState.zoneState === 'PLAYING'">STOP</button>
+            <button (click)="next()" class="framebutton">NEXT</button>
+        </div>
     </div>
     <button class="killbutton" (click)="kill()">KILL</button>
 </div>

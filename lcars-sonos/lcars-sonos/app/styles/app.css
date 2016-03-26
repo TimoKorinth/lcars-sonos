@@ -172,6 +172,18 @@ app {
   display: flex;
   background: #cc99cc;
 }
+.footer > .buttons > div {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
 .footer > .killbutton {
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
@@ -230,6 +242,7 @@ app {
   -webkit-flex: 1 1 35%;
   -ms-flex: 1 1 35%;
   flex: 1 1 35%;
+  text-align: center;
 }
 .imageWrapper:before,
 .imageWrapper:after {
@@ -297,6 +310,12 @@ app {
   background: #cc6666;
   height: 5px;
   bottom: 35px;
+}
+.imageWrapper > span {
+  color: #cc6666;
+  font-size: 24pt;
+  padding: 0px 10px 0px 10px;
+  display: inline-block;
 }
 .contentWrapper {
   -webkit-box-flex: 1;
