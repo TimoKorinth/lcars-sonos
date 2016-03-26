@@ -85,7 +85,7 @@ export class SonosService {
     }
 
     volumeDown(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/-5', {
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/-2', {
             headers: this._headers
         }).subscribe(
             null,
@@ -94,7 +94,7 @@ export class SonosService {
     }
 
     volumeUp(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/+5', {
+        this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/+2', {
             headers: this._headers
         }).subscribe(
             null,

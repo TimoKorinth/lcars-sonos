@@ -82,12 +82,12 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.volumeDown = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/-5', {
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/-2', {
                         headers: this._headers
                     }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.volumeUp = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/+5', {
+                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/+2', {
                         headers: this._headers
                     }).subscribe(null, function (err) { return console.error(err); });
                 };

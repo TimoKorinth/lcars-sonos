@@ -2,7 +2,14 @@
     <div class="title">
         <span>SONOS</span>
     </div>
-    <button class="framebuttonround">+ GROUP</button>
+    <div class="buttons">
+        <button (click)="volumeDown()" class="framebutton" *ngIf="selectedPlayer">DOWN</button>
+        <div class="title right" *ngIf="selectedPlayer && selectedState">
+            <span>VOL {{selectedState.volume}}</span>
+        </div>
+        <button (click)="volumeUp()" class="framebutton" *ngIf="selectedPlayer">UP</button>
+    </div>
+    <button class="framebuttonround"></button>
 </div>
 <div class="frame">
     <div class="content">

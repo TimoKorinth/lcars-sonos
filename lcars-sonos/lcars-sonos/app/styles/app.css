@@ -85,7 +85,7 @@ app {
   -moz-border-radius: 20px 0px 0px 20px;
   border-radius: 20px 0px 0px 20px;
 }
-.header > .title {
+.header .title {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -webkit-flex: 1 1 100%;
@@ -93,12 +93,31 @@ app {
   flex: 1 1 100%;
   background: #cc99cc;
 }
-.header > .title > span {
+.header .title > span {
   background: #000000;
   color: #f7c64a;
   font-size: 24pt;
   padding: 0px 10px 0px 10px;
   display: inline-block;
+}
+.header .title.right > span {
+  padding: 0px 0px 0px 10px;
+}
+.header > .buttons {
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.header > .buttons .framebutton {
+  border-right: none;
+  border-left: 10px solid #000000;
 }
 .footer {
   -webkit-box-flex: 0;

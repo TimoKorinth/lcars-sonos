@@ -104,7 +104,7 @@ app {
         .borderRadius(20px 0px 0px 20px);
     }
 
-    & > .title {
+    & .title {
         .flex(1, 1, 100%);
         background: @purplelight;
 
@@ -114,8 +114,22 @@ app {
             font-size: 24pt;
             padding: 0px 10px 0px 10px;
             display: inline-block;
-        }        
-    }   
+        }
+
+        &.right > span {
+            padding: 0px 0px 0px 10px;
+        }
+    }  
+    
+    & > .buttons {
+        .flex(0, 0, auto);  
+        .flexDisplay;
+
+        & .framebutton {
+            border-right: none;
+            border-left: 10px solid @black;
+        }
+    } 
 }
 
 .footer {
