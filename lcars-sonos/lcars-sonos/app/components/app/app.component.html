@@ -1,4 +1,4 @@
-﻿<div class="header">
+﻿<div class="header" *ngIf="!showFlickrPhotoFrame">
     <div class="title">
         <span>SONOS</span>
     </div>
@@ -9,9 +9,9 @@
         </div>
         <button (click)="volumeUp()" class="framebutton" *ngIf="selectedPlayer">UP</button>
     </div>
-    <button class="framebuttonround"></button>
+    <button class="framebuttonround" (click)="showFlickr()">Flickr</button>
 </div>
-<div class="frame">
+<div class="frame" *ngIf="!showFlickrPhotoFrame">
     <div class="content">
         <div class="imageWrapper">
             <div class="alarmIndicatortop"></div>
@@ -40,7 +40,7 @@
         </template>
     </div>
 </div>
-<div class="footer">
+<div class="footer" *ngIf="!showFlickrPhotoFrame">
     <div class="title" *ngIf="selectedPlayer">
         <span>{{selectedPlayer.roomName}}</span>
     </div>
@@ -56,4 +56,7 @@
         </div>
     </div>
     <button class="killbutton" (click)="kill()">KILL</button>
+</div>
+<div class="flickrPhotoFrame" *ngIf="showFlickrPhotoFrame" (click)="hideFlickr()">
+    <img class="coverimg" [src]="currentFlickrPhoto" alt="Flickr photo" />
 </div>

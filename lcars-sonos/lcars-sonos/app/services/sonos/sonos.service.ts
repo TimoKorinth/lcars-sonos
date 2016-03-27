@@ -1,6 +1,7 @@
 ﻿import { Injectable } from 'angular2/core';
 import { Http, Response, Headers } from 'angular2/http';
 import { Observable } from 'rxjs/Observable';
+import { APP_CONFIG } from '../../config';
 
 @Injectable()
 export class SonosService {
@@ -16,7 +17,7 @@ export class SonosService {
     }
 
     getZones() {
-        return this._http.get('http://minwinpc:5005/zones', {
+        return this._http.get(APP_CONFIG.SONOS_API_SERVER + 'zones', {
             headers: this._headers
         })
         .map(res => res.json())
@@ -25,14 +26,14 @@ export class SonosService {
 
     getZonesPoll() {
         return Observable.interval(5000)
-            .switchMap(() => this._http.get('http://minwinpc:5005/zones', {
+            .switchMap(() => this._http.get(APP_CONFIG.SONOS_API_SERVER + 'zones', {
                 headers: this._headers
             }))
             .map((res: Response) => res.json());
     }
 
     getState(player) {
-        return this._http.get('http://minwinpc:5005/' + player.roomName + '/state', {
+        return this._http.get(APP_CONFIG.SONOS_API_SERVER + player.roomName + '/state', {
             headers: this._headers
         })
         .map(res => res.json())
@@ -41,14 +42,14 @@ export class SonosService {
 
     getStatePoll(player) {
         return Observable.interval(5000)
-            .switchMap(() => this._http.get('http://minwinpc:5005/' + player.roomName + '/state', {
+            .switchMap(() => this._http.get(APP_CONFIG.SONOS_API_SERVER + player.roomName + '/state', {
                 headers: this._headers
             }))
             .map((res: Response) => res.json());
     }
 
     play(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/play', {
+        this._http.get(APP_CONFIG.SONOS_API_SERVER + player.roomName + '/play', {
             headers: this._headers
         }).subscribe(
             null,
@@ -57,7 +58,7 @@ export class SonosService {
     }
 
     pause(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/pause', {
+        this._http.get(APP_CONFIG.SONOS_API_SERVER + player.roomName + '/pause', {
             headers: this._headers
         }).subscribe(
             null,
@@ -66,7 +67,7 @@ export class SonosService {
     }
 
     prev(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/previous', {
+        this._http.get(APP_CONFIG.SONOS_API_SERVER + player.roomName + '/previous', {
             headers: this._headers
         }).subscribe(
             null,
@@ -75,7 +76,7 @@ export class SonosService {
     }
 
     next(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/next', {
+        this._http.get(APP_CONFIG.SONOS_API_SERVER + player.roomName + '/next', {
             headers: this._headers
         }).subscribe(
             null,
@@ -84,7 +85,7 @@ export class SonosService {
     }
 
     pauseall() {
-        this._http.get('http://minwinpc:5005/pauseall', {
+        this._http.get(APP_CONFIG.SONOS_API_SERVER + 'pauseall', {
             headers: this._headers
         }).subscribe(
             null,
@@ -93,7 +94,7 @@ export class SonosService {
     }
 
     volumeDown(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/-2', {
+        this._http.get(APP_CONFIG.SONOS_API_SERVER + player.roomName + '/volume/-1', {
             headers: this._headers
         }).subscribe(
             null,
@@ -102,7 +103,7 @@ export class SonosService {
     }
 
     volumeUp(player) {
-        this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/+2', {
+        this._http.get(APP_CONFIG.SONOS_API_SERVER + player.roomName + '/volume/+1', {
             headers: this._headers
         }).subscribe(
             null,
@@ -110,7 +111,7 @@ export class SonosService {
         );
     }
 
-    private handleError(error: Response) {
+    handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');
     }

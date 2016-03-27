@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', '../../config'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, Observable_1;
+    var core_1, http_1, Observable_1, config_1;
     var SonosService;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             },
             function (Observable_1_1) {
                 Observable_1 = Observable_1_1;
+            },
+            function (config_1_1) {
+                config_1 = config_1_1;
             }],
         execute: function() {
             SonosService = (function () {
@@ -34,7 +37,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     });
                 }
                 SonosService.prototype.getZones = function () {
-                    return this._http.get('http://minwinpc:5005/zones', {
+                    return this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + 'zones', {
                         headers: this._headers
                     })
                         .map(function (res) { return res.json(); })
@@ -43,13 +46,13 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                 SonosService.prototype.getZonesPoll = function () {
                     var _this = this;
                     return Observable_1.Observable.interval(5000)
-                        .switchMap(function () { return _this._http.get('http://minwinpc:5005/zones', {
+                        .switchMap(function () { return _this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + 'zones', {
                         headers: _this._headers
                     }); })
                         .map(function (res) { return res.json(); });
                 };
                 SonosService.prototype.getState = function (player) {
-                    return this._http.get('http://minwinpc:5005/' + player.roomName + '/state', {
+                    return this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + player.roomName + '/state', {
                         headers: this._headers
                     })
                         .map(function (res) { return res.json(); })
@@ -58,43 +61,43 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                 SonosService.prototype.getStatePoll = function (player) {
                     var _this = this;
                     return Observable_1.Observable.interval(5000)
-                        .switchMap(function () { return _this._http.get('http://minwinpc:5005/' + player.roomName + '/state', {
+                        .switchMap(function () { return _this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + player.roomName + '/state', {
                         headers: _this._headers
                     }); })
                         .map(function (res) { return res.json(); });
                 };
                 SonosService.prototype.play = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/play', {
+                    this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + player.roomName + '/play', {
                         headers: this._headers
                     }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.pause = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/pause', {
+                    this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + player.roomName + '/pause', {
                         headers: this._headers
                     }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.prev = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/previous', {
+                    this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + player.roomName + '/previous', {
                         headers: this._headers
                     }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.next = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/next', {
+                    this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + player.roomName + '/next', {
                         headers: this._headers
                     }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.pauseall = function () {
-                    this._http.get('http://minwinpc:5005/pauseall', {
+                    this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + 'pauseall', {
                         headers: this._headers
                     }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.volumeDown = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/-2', {
+                    this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + player.roomName + '/volume/-1', {
                         headers: this._headers
                     }).subscribe(null, function (err) { return console.error(err); });
                 };
                 SonosService.prototype.volumeUp = function (player) {
-                    this._http.get('http://minwinpc:5005/' + player.roomName + '/volume/+2', {
+                    this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + player.roomName + '/volume/+1', {
                         headers: this._headers
                     }).subscribe(null, function (err) { return console.error(err); });
                 };

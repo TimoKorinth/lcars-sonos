@@ -62,9 +62,15 @@
     <Content Include="app\components\app\app.component.js" />
     <Content Include="app\components\app\app.component.js.map" />
     <Content Include="app\components\app\app.component.ts" />
+    <Content Include="app\config.js" />
+    <Content Include="app\config.js.map" />
+    <Content Include="app\config.ts" />
     <Content Include="app\main.js" />
     <Content Include="app\main.js.map" />
     <Content Include="app\main.ts" />
+    <Content Include="app\services\flickr\flickr.service.js" />
+    <Content Include="app\services\flickr\flickr.service.js.map" />
+    <Content Include="app\services\flickr\flickr.service.ts" />
     <Content Include="app\services\sonos\sonos.service.js" />
     <Content Include="app\services\sonos\sonos.service.js.map" />
     <Content Include="app\services\sonos\sonos.service.ts" />
