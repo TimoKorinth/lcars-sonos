@@ -78,7 +78,20 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                     if (this.latestStatePoll) {
                         this.latestStatePoll.unsubscribe();
                     }
-                    this.latestStatePoll = this._sonosService.getStatePush(this.selectedPlayer).subscribe(function (result) { _this.selectedState = result.data.state; });
+                    this.latestStatePoll = this._sonosService.getStatePush().subscribe(function (result) {
+                        if (result.data.uuid === _this.selectedPlayer.uuid) {
+                            _this.selectedState = result.data.state;
+                        }
+                        for (var _i = 0, _a = _this.zones; _i < _a.length; _i++) {
+                            var zone = _a[_i];
+                            for (var _b = 0, _c = zone.members; _b < _c.length; _b++) {
+                                var member = _c[_b];
+                                if (member.uuid === result.data.uuid) {
+                                    member.state = result.data.state;
+                                }
+                            }
+                        }
+                    });
                 };
                 AppComponent.prototype.select = function (player) {
                     this.selectedPlayer = player;

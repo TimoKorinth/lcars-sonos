@@ -60,12 +60,10 @@ export class SonosService {
             .map((res: Response) => res.json());
     }
 
-    getStatePush(player) {
+    getStatePush() {
         var observable = Observable.fromEvent(this._socket, 'change')
             .map(res => JSON.parse(res.toString()))
-            .filter(res => {
-                return res.type === 'transport-state' && res.data.uuid === player.uuid;
-            });
+            .filter(res => res.type === 'transport-state');
         return observable;
     }
 

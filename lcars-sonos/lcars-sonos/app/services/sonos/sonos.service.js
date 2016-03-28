@@ -75,12 +75,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', '../../con
                     }); })
                         .map(function (res) { return res.json(); });
                 };
-                SonosService.prototype.getStatePush = function (player) {
+                SonosService.prototype.getStatePush = function () {
                     var observable = Observable_1.Observable.fromEvent(this._socket, 'change')
                         .map(function (res) { return JSON.parse(res.toString()); })
-                        .filter(function (res) {
-                        return res.type === 'transport-state' && res.data.uuid === player.uuid;
-                    });
+                        .filter(function (res) { return res.type === 'transport-state'; });
                     return observable;
                 };
                 SonosService.prototype.play = function (player) {

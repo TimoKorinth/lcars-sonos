@@ -80,8 +80,20 @@ export class AppComponent implements OnInit {
             this.latestStatePoll.unsubscribe();
         }
 
-        this.latestStatePoll = this._sonosService.getStatePush(this.selectedPlayer).subscribe(
-            result => { this.selectedState = result.data.state }
+        this.latestStatePoll = this._sonosService.getStatePush().subscribe(
+            result => {
+                if (result.data.uuid === this.selectedPlayer.uuid) {
+                    this.selectedState = result.data.state;
+                }
+
+                for (let zone of this.zones) {
+                    for (let member of zone.members) {
+                        if (member.uuid === result.data.uuid) {
+                            member.state = result.data.state;
+                        }
+                    }
+                }
+            }
         );
     }
 
