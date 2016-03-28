@@ -82,13 +82,13 @@ export class AppComponent implements OnInit {
 
         this.latestStatePoll = this._sonosService.getStatePush().subscribe(
             result => {
-                if (result.data.uuid === this.selectedPlayer.uuid) {
+                if (result.data.coordinator === this.selectedPlayer.coordinator) {
                     this.selectedState = result.data.state;
                 }
 
                 for (let zone of this.zones) {
                     for (let member of zone.members) {
-                        if (member.uuid === result.data.uuid) {
+                        if (member.coordinator === result.data.coordinator) {
                             member.state = result.data.state;
                         }
                     }
