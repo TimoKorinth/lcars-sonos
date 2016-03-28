@@ -35,6 +35,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', '../../con
                         "Pragma": "no-cache",
                         "Expires": "0"
                     });
+                    if (config_1.APP_CONFIG.USE_WEBSOCKET_EVENTS) {
+                        this._socket = io(config_1.APP_CONFIG.SONOS_SOCKETIO_SERVER);
+                    }
                 }
                 SonosService.prototype.getZones = function () {
                     return this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + 'zones', {
@@ -51,6 +54,12 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', '../../con
                     }); })
                         .map(function (res) { return res.json(); });
                 };
+                SonosService.prototype.getZonesPush = function () {
+                    var observable = Observable_1.Observable.fromEvent(this._socket, 'change')
+                        .map(function (res) { return JSON.parse(res.toString()); })
+                        .filter(function (res) { return res.type === 'topology-change'; });
+                    return observable;
+                };
                 SonosService.prototype.getState = function (player) {
                     return this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + player.roomName + '/state', {
                         headers: this._headers
@@ -65,6 +74,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', '../../con
                         headers: _this._headers
                     }); })
                         .map(function (res) { return res.json(); });
+                };
+                SonosService.prototype.getStatePush = function (player) {
+                    var observable = Observable_1.Observable.fromEvent(this._socket, 'change')
+                        .map(function (res) { return JSON.parse(res.toString()); })
+                        .filter(function (res) {
+                        return res.type === 'transport-state' && res.data.uuid === player.uuid;
+                    });
+                    return observable;
                 };
                 SonosService.prototype.play = function (player) {
                     this._http.get(config_1.APP_CONFIG.SONOS_API_SERVER + player.roomName + '/play', {

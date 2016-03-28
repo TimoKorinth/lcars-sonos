@@ -7,6 +7,7 @@ import { APP_CONFIG } from '../../config';
 export class SonosService {
 
     _headers: Headers;
+    _socket: SocketIOClient.Socket;
 
     constructor(private _http: Http) {
         this._headers = new Headers({
@@ -14,6 +15,10 @@ export class SonosService {
             "Pragma": "no-cache",
             "Expires": "0"
         });
+
+        if (APP_CONFIG.USE_WEBSOCKET_EVENTS) {
+            this._socket = io(APP_CONFIG.SONOS_SOCKETIO_SERVER);
+        }        
     }
 
     getZones() {
@@ -32,6 +37,13 @@ export class SonosService {
             .map((res: Response) => res.json());
     }
 
+    getZonesPush() {
+        var observable = Observable.fromEvent(this._socket, 'change')
+            .map(res => JSON.parse(res.toString()))
+            .filter(res => res.type === 'topology-change');
+        return observable;
+    }
+
     getState(player) {
         return this._http.get(APP_CONFIG.SONOS_API_SERVER + player.roomName + '/state', {
             headers: this._headers
@@ -46,6 +58,15 @@ export class SonosService {
                 headers: this._headers
             }))
             .map((res: Response) => res.json());
+    }
+
+    getStatePush(player) {
+        var observable = Observable.fromEvent(this._socket, 'change')
+            .map(res => JSON.parse(res.toString()))
+            .filter(res => {
+                return res.type === 'transport-state' && res.data.uuid === player.uuid;
+            });
+        return observable;
     }
 
     play(player) {

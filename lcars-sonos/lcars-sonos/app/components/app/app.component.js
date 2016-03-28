@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.service', '../../services/flickr/flickr.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.service', '../../services/flickr/flickr.service', '../../config'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, sonos_service_1, flickr_service_1;
+    var core_1, http_1, sonos_service_1, flickr_service_1, config_1;
     var AppComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
             },
             function (flickr_service_1_1) {
                 flickr_service_1 = flickr_service_1_1;
+            },
+            function (config_1_1) {
+                config_1 = config_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -33,9 +36,13 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                     this._flickrService = _flickrService;
                 }
                 AppComponent.prototype.ngOnInit = function () {
-                    //this.socket = io('http://localhost:5007');
                     this.getZonesOnce();
-                    this.getZonesPoll();
+                    if (config_1.APP_CONFIG.USE_WEBSOCKET_EVENTS) {
+                        this.getZonesPush();
+                    }
+                    else {
+                        this.getZonesPoll();
+                    }
                 };
                 AppComponent.prototype.trackByZones = function (index, zone) {
                     return zone.uuid;
@@ -51,6 +58,10 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                     var _this = this;
                     this._sonosService.getZonesPoll().subscribe(function (zones) { _this.zones = zones; });
                 };
+                AppComponent.prototype.getZonesPush = function () {
+                    var _this = this;
+                    this._sonosService.getZonesPush().subscribe(function (result) { _this.zones = result.data; });
+                };
                 AppComponent.prototype.getStateOnce = function () {
                     var _this = this;
                     this._sonosService.getState(this.selectedPlayer).subscribe(function (state) { _this.selectedState = state; });
@@ -62,26 +73,34 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                     }
                     this.latestStatePoll = this._sonosService.getStatePoll(this.selectedPlayer).subscribe(function (state) { _this.selectedState = state; });
                 };
+                AppComponent.prototype.getStatePush = function () {
+                    var _this = this;
+                    if (this.latestStatePoll) {
+                        this.latestStatePoll.unsubscribe();
+                    }
+                    this.latestStatePoll = this._sonosService.getStatePush(this.selectedPlayer).subscribe(function (result) { _this.selectedState = result.data.state; });
+                };
                 AppComponent.prototype.select = function (player) {
                     this.selectedPlayer = player;
                     this.selectedState = player.state;
-                    this.getStatePoll();
+                    if (config_1.APP_CONFIG.USE_WEBSOCKET_EVENTS) {
+                        this.getStatePush();
+                    }
+                    else {
+                        this.getStatePoll();
+                    }
                 };
                 AppComponent.prototype.play = function () {
                     this._sonosService.play(this.selectedPlayer);
-                    this.getStateOnce();
                 };
                 AppComponent.prototype.pause = function () {
                     this._sonosService.pause(this.selectedPlayer);
-                    this.getStateOnce();
                 };
                 AppComponent.prototype.prev = function () {
                     this._sonosService.prev(this.selectedPlayer);
-                    this.getStateOnce();
                 };
                 AppComponent.prototype.next = function () {
                     this._sonosService.next(this.selectedPlayer);
-                    this.getStateOnce();
                 };
                 AppComponent.prototype.kill = function () {
                     this._sonosService.pauseall();

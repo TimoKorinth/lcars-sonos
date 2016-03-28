@@ -2,6 +2,7 @@
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { SonosService } from '../../services/sonos/sonos.service';
 import { FlickrService } from '../../services/flickr/flickr.service';
+import { APP_CONFIG } from '../../config';
 
 @Component({
     selector: 'app',
@@ -15,8 +16,7 @@ export class AppComponent implements OnInit {
     public selectedState;
     public showFlickrPhotoFrame: boolean;
     public currentFlickrPhoto;
-
-    socket: SocketIOClient.Socket;
+    
     latestStatePoll;
     latestPhotoPoll;
 
@@ -24,10 +24,13 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        //this.socket = io('http://localhost:5007');
-
         this.getZonesOnce();
-        this.getZonesPoll();
+
+        if (APP_CONFIG.USE_WEBSOCKET_EVENTS) {
+            this.getZonesPush();
+        } else {
+            this.getZonesPoll();
+        }        
     }
 
     trackByZones(index: number, zone) {
@@ -50,6 +53,12 @@ export class AppComponent implements OnInit {
         );
     }
 
+    getZonesPush() {
+        this._sonosService.getZonesPush().subscribe(
+            result => { this.zones = result.data }
+        );
+    }
+
     getStateOnce() {
         this._sonosService.getState(this.selectedPlayer).subscribe(
             state => { this.selectedState = state }
@@ -66,30 +75,41 @@ export class AppComponent implements OnInit {
         );
     }
 
+    getStatePush() {
+        if (this.latestStatePoll) {
+            this.latestStatePoll.unsubscribe();
+        }
+
+        this.latestStatePoll = this._sonosService.getStatePush(this.selectedPlayer).subscribe(
+            result => { this.selectedState = result.data.state }
+        );
+    }
+
     select(player) {
         this.selectedPlayer = player;
         this.selectedState = player.state;
-        this.getStatePoll();
+
+        if (APP_CONFIG.USE_WEBSOCKET_EVENTS) {
+            this.getStatePush();
+        } else {
+            this.getStatePoll();
+        }        
     }
 
     play() {
         this._sonosService.play(this.selectedPlayer);
-        this.getStateOnce();
     }
 
     pause() {
         this._sonosService.pause(this.selectedPlayer);
-        this.getStateOnce();
     }
 
     prev() {
         this._sonosService.prev(this.selectedPlayer);
-        this.getStateOnce();
     }
 
     next() {
         this._sonosService.next(this.selectedPlayer);
-        this.getStateOnce();
     }
 
     kill() {
