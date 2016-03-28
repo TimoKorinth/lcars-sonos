@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.service', '../../services/flickr/flickr.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, sonos_service_1;
+    var core_1, http_1, sonos_service_1, flickr_service_1;
     var AppComponent;
     return {
         setters:[
@@ -22,11 +22,15 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
             },
             function (sonos_service_1_1) {
                 sonos_service_1 = sonos_service_1_1;
+            },
+            function (flickr_service_1_1) {
+                flickr_service_1 = flickr_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(_sonosService) {
+                function AppComponent(_sonosService, _flickrService) {
                     this._sonosService = _sonosService;
+                    this._flickrService = _flickrService;
                 }
                 AppComponent.prototype.ngOnInit = function () {
                     //this.socket = io('http://localhost:5007');
@@ -90,13 +94,24 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                     this._sonosService.volumeUp(this.selectedPlayer);
                     this.getStateOnce();
                 };
+                AppComponent.prototype.showFlickr = function () {
+                    var _this = this;
+                    this.showFlickrPhotoFrame = true;
+                    this.latestPhotoPoll = this._flickrService.getRandomPhotoPoll().subscribe(function (photo) { _this.currentFlickrPhoto = photo; });
+                };
+                AppComponent.prototype.hideFlickr = function () {
+                    this.showFlickrPhotoFrame = false;
+                    if (this.latestPhotoPoll) {
+                        this.latestPhotoPoll.unsubscribe();
+                    }
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'app',
                         templateUrl: 'app/components/app/app.component.html',
-                        providers: [http_1.HTTP_PROVIDERS, sonos_service_1.SonosService]
+                        providers: [http_1.HTTP_PROVIDERS, sonos_service_1.SonosService, flickr_service_1.FlickrService]
                     }), 
-                    __metadata('design:paramtypes', [sonos_service_1.SonosService])
+                    __metadata('design:paramtypes', [sonos_service_1.SonosService, flickr_service_1.FlickrService])
                 ], AppComponent);
                 return AppComponent;
             }());

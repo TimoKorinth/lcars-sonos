@@ -1,22 +1,26 @@
 ﻿import { Component, OnInit } from 'angular2/core';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { SonosService } from '../../services/sonos/sonos.service';
+import { FlickrService } from '../../services/flickr/flickr.service';
 
 @Component({
     selector: 'app',
     templateUrl: 'app/components/app/app.component.html',
-    providers: [HTTP_PROVIDERS, SonosService]
+    providers: [HTTP_PROVIDERS, SonosService, FlickrService]
 })
 export class AppComponent implements OnInit {
 
     public zones;
     public selectedPlayer;
     public selectedState;
+    public showFlickrPhotoFrame: boolean;
+    public currentFlickrPhoto;
 
     socket: SocketIOClient.Socket;
     latestStatePoll;
+    latestPhotoPoll;
 
-    constructor(private _sonosService: SonosService) {
+    constructor(private _sonosService: SonosService, private _flickrService: FlickrService) {
     }
 
     ngOnInit() {
@@ -102,4 +106,18 @@ export class AppComponent implements OnInit {
         this.getStateOnce();
     }
 
+    showFlickr() {
+        this.showFlickrPhotoFrame = true;
+        this.latestPhotoPoll = this._flickrService.getRandomPhotoPoll().subscribe(
+            photo => { this.currentFlickrPhoto = photo }
+        );
+    }
+
+    hideFlickr() {
+        this.showFlickrPhotoFrame = false;
+
+        if (this.latestPhotoPoll) {
+            this.latestPhotoPoll.unsubscribe();
+        }
+    }
 }

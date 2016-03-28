@@ -1,6 +1,7 @@
-﻿{
+{
   "ambientDependencies": {
     "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd",
-    "socket.io-client": "registry:dt/socket.io-client#1.4.4+20160317120654"
+    "socket.io-client": "registry:dt/socket.io-client#1.4.4+20160317120654",
+    "blueimp-md5": "registry:dt/blueimp-md5#1.1.0+20160316155526"
   }
 }
