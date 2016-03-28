@@ -71,11 +71,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable', '../../con
                 };
                 FlickrService.prototype.getRandomPhotoPoll = function () {
                     var _this = this;
-                    return Observable_1.Observable.interval(5000)
+                    return Observable_1.Observable.interval(30000)
                         .map(function () {
                         var photo = _this.photos[Math.floor(Math.random() * _this.photos.length)];
-                        // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
-                        return "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_z.jpg";
+                        return "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_b.jpg";
                     });
                 };
                 FlickrService.prototype.handleError = function (error) {

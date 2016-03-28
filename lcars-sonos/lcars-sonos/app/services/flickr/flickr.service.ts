@@ -56,11 +56,10 @@ export class FlickrService {
     }
 
     getRandomPhotoPoll() {
-        return Observable.interval(5000)
+        return Observable.interval(30000)
             .map(() => {
                 var photo = this.photos[Math.floor(Math.random() * this.photos.length)];
-                // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
-                return "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_z.jpg";
+                return "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_b.jpg";
             });
     }
 
