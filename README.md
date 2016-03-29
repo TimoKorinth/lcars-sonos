@@ -6,7 +6,7 @@ This is a player for the SONOS sound system based on the Star Trek LCARS design 
 - Windows 10 Iot (optional)
 - RaspberryPi touch display (optional)
 
-![LCARSSONOSPlayer](http://timokorinth.de/wp-content/uploads/2016/03/LCARS_SONOS_Player.png)
+![LCARSSONOSPlayer](http://timokorinth.de/wp-content/uploads/2016/03/LCARS_SONOS_PlayerV2.png)
 
 ## Angular 2 application
 You can use it without a RaspberryPi or Windows 10. To do this you just have to run "npm install" and then "npm start".
