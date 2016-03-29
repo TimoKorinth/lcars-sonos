@@ -43,7 +43,19 @@ export class AppComponent implements OnInit {
 
     getZonesOnce() {
         this._sonosService.getZones().subscribe(
-            zones => { this.zones = zones }
+            zones => {
+                this.zones = zones;
+                if (this.selectedPlayer) {
+                    for (let zone of this.zones) {
+                        for (let member of zone.members) {
+                            if (member.uuid === this.selectedPlayer.uuid) {
+                                this.selectedPlayer = member;
+                                this.selectedState = member.state;
+                            }
+                        }
+                    }
+                }
+            }
         );
     }
 
@@ -82,17 +94,18 @@ export class AppComponent implements OnInit {
 
         this.latestStatePoll = this._sonosService.getStatePush().subscribe(
             result => {
-                if (result.data.coordinator === this.selectedPlayer.coordinator) {
-                    this.selectedState = result.data.state;
-                }
+                this.getZonesOnce();
+                //if (result.data.coordinator === this.selectedPlayer.coordinator) {
+                //    this.selectedState = result.data.state;
+                //}
 
-                for (let zone of this.zones) {
-                    for (let member of zone.members) {
-                        if (member.coordinator === result.data.coordinator) {
-                            member.state = result.data.state;
-                        }
-                    }
-                }
+                //for (let zone of this.zones) {
+                //    for (let member of zone.members) {
+                //        if (member.coordinator === result.data.coordinator) {
+                //            member.state = result.data.state;
+                //        }
+                //    }
+                //}
             }
         );
     }

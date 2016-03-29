@@ -52,7 +52,21 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                 };
                 AppComponent.prototype.getZonesOnce = function () {
                     var _this = this;
-                    this._sonosService.getZones().subscribe(function (zones) { _this.zones = zones; });
+                    this._sonosService.getZones().subscribe(function (zones) {
+                        _this.zones = zones;
+                        if (_this.selectedPlayer) {
+                            for (var _i = 0, _a = _this.zones; _i < _a.length; _i++) {
+                                var zone = _a[_i];
+                                for (var _b = 0, _c = zone.members; _b < _c.length; _b++) {
+                                    var member = _c[_b];
+                                    if (member.uuid === _this.selectedPlayer.uuid) {
+                                        _this.selectedPlayer = member;
+                                        _this.selectedState = member.state;
+                                    }
+                                }
+                            }
+                        }
+                    });
                 };
                 AppComponent.prototype.getZonesPoll = function () {
                     var _this = this;
@@ -79,18 +93,17 @@ System.register(['angular2/core', 'angular2/http', '../../services/sonos/sonos.s
                         this.latestStatePoll.unsubscribe();
                     }
                     this.latestStatePoll = this._sonosService.getStatePush().subscribe(function (result) {
-                        if (result.data.coordinator === _this.selectedPlayer.coordinator) {
-                            _this.selectedState = result.data.state;
-                        }
-                        for (var _i = 0, _a = _this.zones; _i < _a.length; _i++) {
-                            var zone = _a[_i];
-                            for (var _b = 0, _c = zone.members; _b < _c.length; _b++) {
-                                var member = _c[_b];
-                                if (member.coordinator === result.data.coordinator) {
-                                    member.state = result.data.state;
-                                }
-                            }
-                        }
+                        _this.getZonesOnce();
+                        //if (result.data.coordinator === this.selectedPlayer.coordinator) {
+                        //    this.selectedState = result.data.state;
+                        //}
+                        //for (let zone of this.zones) {
+                        //    for (let member of zone.members) {
+                        //        if (member.coordinator === result.data.coordinator) {
+                        //            member.state = result.data.state;
+                        //        }
+                        //    }
+                        //}
                     });
                 };
                 AppComponent.prototype.select = function (player) {
