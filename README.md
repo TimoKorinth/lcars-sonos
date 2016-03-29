@@ -32,6 +32,16 @@ In order to communicate with your local SONOS system, it uses node-sonos-http-ap
 - (Optional: Allow Node.exe to communicate through the firewall with the following command: "netsh advfirewall firewall add rule name="Node.js" dir=in action=allow program="C:\Nodejs\node.exe" enable=yes")
 - Create task: "schtasks /create /tn "NodeJS" /tr "c:\Nodejs\node.exe c:\Projects\nodesonos\server.js" /sc onstart /ru SYSTEM"
 
+## Setup SONOS push server
+You have two options for the data communication: push or poll (define your preferred option in config.ts). In order to get the push events working, you need to setup another node server which communicates with the running node-sonos-http-api server and communicates with the client via socket.io (http://socket.io/). I've created a server for this: https://github.com/TimoKorinth/sonos-push-server. Download it and do the following steps:
+- run "npm install" in root folder
+- Create another folder on your Raspberry Pi and copy the content (optional)
+- Create a "settings.json" in the root folder of node-sonos-http-api (e.g. "Projects\nodesonos") and put in this code block:
+{
+  "webhook": "http://localhost:5007/"
+}
+- Start server "node server.js" or create another Task for this (on your RaspberryPi): "schtasks /create /tn "SonosPush" /tr "c:\Nodejs\node.exe c:\Projects\sonospush\server.js" /sc onstart /ru SYSTEM"
+
 ## Enable CORS (Cross-Origin Resource Sharing)
 - Change "sonos-http-api.js" in nodesonos/lib folder. Add the following lines to requestHandler function (just above "res.write(new Buffer(jsonResponse));"):
     - res.setHeader("Access-Control-Allow-Origin", "*");
@@ -40,4 +50,4 @@ In order to communicate with your local SONOS system, it uses node-sonos-http-ap
 - Change "req.method === 'GET'" in nodesonos/server.js to "req.method === 'GET' || req.method === 'OPTIONS'" (~line 66)
 
 ## Bugfixing
-- In order to get the volume controls working on a RaspberryPi (at least for me), you have to add the line "console.log(replaceTable);" to "nodesonos/node_modules/sonos-discovery/lib/sonos.js" in the function "String.prototype.format" (~line 64).
+- In order to get the volume controls working on a RaspberryPi (at least for me), you have to add the line "console.log(replaceTable);" to "nodesonos/node_modules/sonos-discovery/lib/sonos.js" in the function "String.prototype.format" (~line 64). I know: This does not make any sense, but it worked for me ;-)
